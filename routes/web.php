@@ -18,5 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/apartments', 'ApartmentController@index');
+Route::get('/apartments/create', 'ApartmentController@create');
+Route::post('/apartments/create', 'ApartmentController@store');
+Route::get('/apartments/{id}', 'ApartmentController@show');
+
 Route::get('/tasks', 'TaskController@index');
+Route::get('/tasks/create', 'TaskController@create');
+Route::post('/tasks/create', 'TaskController@store');
+Route::get('/tasks/{id}', 'TaskController@show');
