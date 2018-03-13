@@ -40,7 +40,7 @@
                             <label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
 
                             <div class="col-md-6">
-                                <textarea class="form-control" id="description" name="description" rows="5"></textarea>
+                                <textarea class="form-control" id="description" name="description" rows="5" placeholder="what's the problem?"></textarea>
 
                             </div>
                         </div>
@@ -55,7 +55,10 @@
 
                 </div>
 
-                <div class="form-group row row-centered ">
+
+                <br>
+                <br>
+                <div>
                 <!-- I would like to make the submit button smaller and centered bootstrap!  -->
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
                 </div>
