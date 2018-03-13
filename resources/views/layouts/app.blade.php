@@ -28,6 +28,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li><a class="nav-link" href="{{ action('ApartmentController@index') }}">Apartments</a></li>
+                        <li><a class="nav-link" href="{{ action('TaskController@index') }}">Tasks</a></li>
 
                     </ul>
 
