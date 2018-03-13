@@ -16,7 +16,7 @@ class AddColumnsToUserTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('tel');
             $table->text('img_link');
-            $table->integer('role_id');
+            $table->integer('role_id')->nullable();
         });
     }
 
