@@ -28,3 +28,13 @@ Route::get('/tasks', 'TaskController@index');
 Route::get('/tasks/create', 'TaskController@create');
 Route::post('/tasks/create', 'TaskController@store');
 Route::get('/tasks/{id}', 'TaskController@show');
+
+Route::get('/reservations', 'ReservationController@index');
+Route::get('/reservations/create', 'ReservationController@create');
+Route::post('/reservations/create', 'ReservationController@store');
+Route::get('/reservations/{id}', 'ReservationController@show');
+
+Route::get('/form', 'FormController@index');
+Route::get('/form/create', 'FormController@create');
+Route::post('/form/create', 'FormController@store');
+Route::get('/form/{id}', 'FormController@show');
