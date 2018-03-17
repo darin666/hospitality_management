@@ -22,7 +22,7 @@ class CreateFormsTable extends Migration
             $table->date('dob');
             $table->text('address');
             $table->string('passportNumber');
-            $table->string('visaNumber');
+            $table->string('visaNumber')->nullable();
             $table->date('checkInDate');
             $table->date('checkOutDate');
             $table->timestamps();
