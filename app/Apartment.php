@@ -19,6 +19,11 @@ class Apartment extends Model
         return $this->hasMany('App\Form');
     }
 
+    public function reservations()
+    {
+        return $this->hasMany('App\Reservation');
+    }
+
     public function status()
     {
         return $this->belongsTo('App\Status');

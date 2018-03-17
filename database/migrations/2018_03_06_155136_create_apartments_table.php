@@ -20,6 +20,7 @@ class CreateApartmentsTable extends Migration
             $table->text('address');
             $table->text('img_link');
             $table->integer('key_counts');
+            $table->timestamps();
         });
     }
 
