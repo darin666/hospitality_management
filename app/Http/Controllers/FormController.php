@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Form;                               // model included here
 use Illuminate\Http\Request;
 
 class FormController extends Controller
@@ -13,7 +14,9 @@ class FormController extends Controller
      */
     public function index()
     {
-        //
+        $forms = Form::all();
+
+        return view ('forms/index', compact('forms'));
     }
 
     /**
@@ -23,7 +26,7 @@ class FormController extends Controller
      */
     public function create()
     {
-        //
+        return view('forms/create');
     }
 
     /**
@@ -45,7 +48,9 @@ class FormController extends Controller
      */
     public function show($id)
     {
-        //
+        $form = Form::findOrFail($id);
+
+        return view('forms/show', compact('form'));
     }
 
     /**
