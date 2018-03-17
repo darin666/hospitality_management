@@ -38,5 +38,5 @@ Route::get('/reservations/{id}', 'ReservationController@show');
 
 Route::get('/form', 'FormController@index');
 Route::get('/form/create', 'FormController@create');
-Route::post('/form/create', 'FormController@store');
 Route::get('/form/{id}', 'FormController@show');
+Route::post('/form', 'FormController@store');
