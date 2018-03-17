@@ -8,6 +8,17 @@ class Form extends Model
 {
     protected $table = "forms";
 
+    protected $fillable =
+    ['firstname',
+    'lastname',
+    'dob',
+    'address',
+    'passportNumber',
+    'visaNumber',
+    'checkInDate',
+    'checkOutDate',
+    'nationality'];
+
 
     public function statusChanges()
     {
