@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Apartment;
 use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
@@ -13,7 +14,8 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        return view('apartments.index');
+        $apartments = \App\Apartment::all();
+        return view('apartments.index',['apartments' => $apartments]);
     }
 
     /**
@@ -23,7 +25,8 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        //
+        $apartments = \App\Apartment::all();
+        return view('apartments.create', ['apartments' => $apartments]);
     }
 
     /**
@@ -34,7 +37,15 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newApartment = new Apartment();
+        $newApartment->name = $request->get('name');
+        $newApartment->address = $request->get('address');
+        $newApartment->status_id = $request->get('status_id');
+        $newApartment->key_counts = $request->get('key_counts');
+        $newApartment->img_link = $request->get('img_link');
+        $newApartment->save();
+
+        return redirect(action('ApartmentController@index'));
     }
 
     /**
