@@ -2,76 +2,108 @@
 
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Task</div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Create a new Task</div>
 
-                <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
-                            @csrf
+                    <div class="card-body">
+                        <form method="POST" action="{{ action('TaskController@store') }}">
+                            {!! csrf_field() !!}
                             <div class="form-group row">
-                                <label for="apartment_id" class="col-md-4 col-form-label text-md-right">Apartment</label>
+                                <label for="user_id" class="col-md-4 col-form-label text-md-right">User ID</label>
 
                                 <div class="col-md-6">
-
-                                    <select class="form-control" name="apartment_id">
-                                        <!-- this part should be taken from the database, apartments table  -->
-
-                                        <option>Apartment 1</option>
-                                        <option>Apartment 2</option>
-                                        <option>Apartment 3</option>
-                                        <option>Apartment 4</option>
-                                        <option>Apartment 5</option>
-                                    </select>
+                                    <input id="user_id" type="number" class="form-control" name="user_id">
 
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">Raised by</label>
+                                <label for="apartment_id" class="col-md-4 col-form-label text-md-right">Apartment ID</label>
 
                                 <div class="col-md-6">
-                                    <input id="raisedBy_id" type="text" class="form-control" name="raisedBy_id">
+                                    <input id="apartment_id" type="number" class="form-control" name="apartment_id">
 
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="status_id" class="col-md-4 col-form-label text-md-right">Status ID</label>
+
+                                <div class="col-md-6">
+                                    <input id="status_id" type="number" class="form-control" name="status_id">
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="raisedBy_id" class="col-md-4 col-form-label text-md-right">Raised by ID</label>
+
+                                <div class="col-md-6">
+                                    <input id="raisedBy_id" type="number" class="form-control" name="raisedBy_id">
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+
+                                <div class="col-md-6">
+                                    <input id="name" type="text" class="form-control" name="name">
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="category_id" class="col-md-4 col-form-label text-md-right">Category ID</label>
+
+                                <div class="col-md-6">
+                                    <input id="category_id" type="number" class="form-control" name="category_id">
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group row">
+                                <label for="statusChange_id" class="col-md-4 col-form-label text-md-right">Status Change ID</label>
+
+                                <div class="col-md-6">
+                                    <input id="statusChange_id" type="number" class="form-control" name="statusChange_id">
+
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
 
                                 <div class="col-md-6">
-                                    <textarea class="form-control" id="description" name="description" rows="5" placeholder="what's the problem?"></textarea>
+                                    <textarea id="description" type="text" class="form-control" rows="5" name="description"></textarea>
 
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                            <!-- we have to figure out how this will work with uploading the images -->
-                                <label for="img_link">Upload image</label>
-                                <input type="file" class="form-control-file" id="img_link" aria-describedby="fileHelp" name="img_link">
+
+                            <div class="form-group row">
+                                <label for="img_link" class="col-md-4 col-form-label text-md-right">Link to photo </label>
+
+                                <div class="col-md-6">
+                                <input type="text" class="form-control-file" id="img_link" aria-describedby="text" name="img_link">
                                 <small id="fileHelp" class="form-text text-muted">Please upload image here</small>
+
+                                </div>
                             </div>
+
+                            <div>
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                            </div>
+
                         </form>
+                    </div>
+
                 </div>
-                <br>
-                <br>
-            <div>
-                <!-- I would like to make the submit button smaller and centered bootstrap!  -->
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-                </div>
-
-
-
-
-
-
-
-
             </div>
         </div>
     </div>
-</div>
-</div>
 @endsection
