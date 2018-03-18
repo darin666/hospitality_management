@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="container">
-    Show all outstanding tasks to finish.
+    <h3>Show all outstanding tasks to finish.</h3><br>
         @foreach($tasks as $task)
-            <div class="btn btn-primary">{{$task->description}}</div>
+           <br> <div class="btn btn-danger">{{$task->description}}</div><br>
         @endforeach
-    <a class="btn btn-primary" href="{{ action('TaskController@create') }}">Create a new task</a>
+    <br><a class="btn btn-primary" href="{{ action('TaskController@create') }}">Create a new task</a><br>
     </div>
 
 
