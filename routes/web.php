@@ -36,7 +36,12 @@ Route::get('/reservations/create', 'ReservationController@create');
 Route::post('/reservations/create', 'ReservationController@store');
 Route::get('/reservations/{id}', 'ReservationController@show');
 
-Route::get('/form', 'FormController@index');
-Route::get('/form/create', 'FormController@create');
-Route::get('/form/{id}', 'FormController@show');
-Route::post('/form', 'FormController@store');
+// form routes optimization via resource fn - will generate all routes from the controller according to naming convention
+
+// Route::get('/form', 'FormController@index');
+// Route::get('/form/create', 'FormController@create');
+// Route::get('/form/{id}', 'FormController@show');
+// Route::post('/form', 'FormController@store');
+// Route::get('/form/{id}/edit', 'FormController@edit');
+
+Route::resource('form', 'FormController');
