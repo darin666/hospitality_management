@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Form;                               // model included here
 use App\Http\Requests;
 use App\Http\Requests\CreateFormRequest;
+use App\Http\Requests\UpdateFormRequest;
 
-// use Request;
+
+//use Request;
 // changed from Illuminate\Http\Request;
 
 class FormController extends Controller
@@ -18,7 +20,7 @@ class FormController extends Controller
      */
     public function index()
     {
-        $forms = Form::latest('created_at')->get();
+        $forms = Form::latest('updated_at')->get();
 
         return view ('forms/index', compact('forms'));
     }
@@ -73,7 +75,9 @@ class FormController extends Controller
      */
     public function edit($id)
     {
-        //
+        $form = Form::findOrFail($id);
+
+        return view('forms/edit', compact('form')); // passing $form in compact
     }
 
     /**
@@ -83,9 +87,13 @@ class FormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, UpdateFormRequest $request)
     {
-        //
+        $form = Form::findOrFail($id);
+
+        $form->update($request->all());
+
+        return redirect('form');
     }
 
     /**
