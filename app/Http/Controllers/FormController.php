@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Form;                               // model included here
-use Request;                                // changed from Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\Requests\CreateFormRequest;
+
+// use Request;
+// changed from Illuminate\Http\Request;
 
 class FormController extends Controller
 {
@@ -35,9 +39,12 @@ class FormController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    public function store(CreateFormRequest $request)
     {
-        Form::create(Request::all());
+        // validation in CreateFormRequest
+
+        Form::create($request->all());
 
         // might want to use Carbon::now() in the future
 
