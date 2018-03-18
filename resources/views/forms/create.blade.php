@@ -6,15 +6,16 @@
     <hr/>
 
     {!! Form::open(['url' => 'form']) !!}
+        <!-- DATE TODAY -->
         <div class="form-group">
             {!! Form::label('checkInDate', 'Check in date:') !!}
             <!-- ['class' => 'form-control'] = bootsrap class -->
-            {!! Form::text('checkInDate', null, ['class' => 'form-control']) !!}
+            {!! Form::input('date', 'checkInDate', date('Y-m-d'), ['class' => 'form-control']) !!}
         </div>
-
+        <!-- DATE TODAY -->
         <div class="form-group">
             {!! Form::label('checkOutDate', 'Check out date:') !!}
-            {!! Form::text('checkOutDate', null, ['class' => 'form-control']) !!}
+            {!! Form::input('date', 'checkOutDate', date('Y-m-d'), ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">
@@ -26,10 +27,10 @@
             {!! Form::label('firstname', 'First name:') !!}
             {!! Form::text('firstname', null, ['class' => 'form-control']) !!}
         </div>
-
+        <!-- DATE GENERAL -->
          <div class="form-group">
             {!! Form::label('dob', 'Date of birth:') !!}
-            {!! Form::text('dob', null, ['class' => 'form-control']) !!}
+            {!! Form::input('date', 'dob', null, ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">

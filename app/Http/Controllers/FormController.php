@@ -14,7 +14,7 @@ class FormController extends Controller
      */
     public function index()
     {
-        $forms = Form::latest('created_at')->get();     
+        $forms = Form::latest('created_at')->get();
 
         return view ('forms/index', compact('forms'));
     }
@@ -37,9 +37,7 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
-        $input = Request::all();
-
-        Form::create($input);
+        Form::create(Request::all());
 
         // might want to use Carbon::now() in the future
 
