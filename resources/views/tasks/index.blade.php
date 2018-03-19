@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
     <h3>Show all outstanding tasks to finish.</h3><br>
-        @foreach($tasks as $newTask)
+        @foreach($tasks as $newTask)<br>
         <a class="btn btn-danger" href="{{ route('show task',['id'=>$newTask->id]) }}">{{$newTask->description}}</a><br>
         @endforeach
 
