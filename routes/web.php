@@ -21,11 +21,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::get('/apartments', 'ApartmentController@index');
-//Route::get('/apartments/create', 'ApartmentController@create');
-//Route::post('/apartments/create', 'ApartmentController@store');
+Route::get('/apartments', 'ApartmentController@index');
+Route::get('/apartments/create', 'ApartmentController@create');
+Route::post('/apartments/create', 'ApartmentController@store');
 Route::get('/apartments/{id}', 'ApartmentController@show')->name('show apartment');
-Route::resource('apartments','ApartmentController');
+//Route::resource('apartments','ApartmentController');
 
 // Route::get('/tasks', 'TaskController@index');
 // Route::get('/tasks/create', 'TaskController@create');

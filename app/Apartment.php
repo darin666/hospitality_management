@@ -21,7 +21,7 @@ class Apartment extends Model
 
     public function reservations()
     {
-        return $this->hasMany('App\Reservation');
+        return $this->hasMany('App\Reservation','apartment_id','id');
     }
 
     public function status()
