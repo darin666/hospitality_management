@@ -66,7 +66,7 @@ class FormController extends Controller
     public function show($id)
     {
         $form = Form::findOrFail($id);
-        $shownApartment = \App\Apartment::find($id);
+        $shownApartment = \App\Apartment::find($form->apartment_id);
 
         return view('forms/show', compact('form', 'shownApartment'));
     }
@@ -82,7 +82,7 @@ class FormController extends Controller
         $form = Form::findOrFail($id);
         $shownApartment = \App\Apartment::find($form->apartment_id);
 
-        return view('forms/edit', compact('form',  'shownApartment')); // passing $form in compact
+        return view('forms/edit', compact('form', 'shownApartment')); // passing $form in compact
     }
 
     /**
