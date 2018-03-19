@@ -17,7 +17,8 @@ class Form extends Model
     'visaNumber',
     'checkInDate',
     'checkOutDate',
-    'nationality'];
+    'nationality',
+    'apartment_id',]; // temporary
 
 
     public function statusChanges()

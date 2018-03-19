@@ -1,3 +1,6 @@
+        <!-- TEMPORARY -->
+        {!! Form::hidden('apartment_id', $shownApartment->id) !!}
+
         <!-- DATE TODAY -->
         <div class="form-group">
             {!! Form::label('checkInDate', 'Check in date:') !!}

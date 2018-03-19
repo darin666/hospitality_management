@@ -44,6 +44,7 @@ Route::get('/reservations/{id}', 'ReservationController@show');
 // Route::get('/form/create', 'FormController@create');
 // Route::get('/form/{id}', 'FormController@show');
 // Route::post('/form', 'FormController@store');
-// Route::get('/form/{id}/edit', 'FormController@edit');
+//Route::get('/form/{id}/edit', 'FormController@edit');
 
 Route::resource('form', 'FormController');
+Route::get('/form/create/{id}', 'FormController@create');

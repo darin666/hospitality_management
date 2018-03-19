@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Form;                               // model included here
+use App\Apartment;
 use App\Http\Requests;
 use App\Http\Requests\CreateFormRequest;
 use App\Http\Requests\UpdateFormRequest;
@@ -30,9 +31,11 @@ class FormController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('forms/create');
+        $shownApartment = \App\Apartment::find($id);
+
+        return view('forms/create', compact( 'shownApartment'));
     }
 
     /**
@@ -63,8 +66,9 @@ class FormController extends Controller
     public function show($id)
     {
         $form = Form::findOrFail($id);
+        $shownApartment = \App\Apartment::find($id);
 
-        return view('forms/show', compact('form'));
+        return view('forms/show', compact('form', 'shownApartment'));
     }
 
     /**
@@ -76,8 +80,9 @@ class FormController extends Controller
     public function edit($id)
     {
         $form = Form::findOrFail($id);
+        $shownApartment = \App\Apartment::find($form->apartment_id);
 
-        return view('forms/edit', compact('form')); // passing $form in compact
+        return view('forms/edit', compact('form',  'shownApartment')); // passing $form in compact
     }
 
     /**
