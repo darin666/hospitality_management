@@ -16,4 +16,8 @@
 
     <br/>
 
+    <a href="{{ action('FormController@edit', [$form->id]) }}">
+        <button type="button" class="btn btn-primary">EDIT GUEST DETAILS</button>
+    </a>
+
 @endsection
