@@ -13,9 +13,6 @@
             @endforeach
         </ul>
 
-
-        <p>Here we will show the list of options that belong to this question</p>
-
         <a href="{{ action('ReservationController@create', [$apartment->id]) }}">Add more reservations for this apartment</a>
 
     </div>
