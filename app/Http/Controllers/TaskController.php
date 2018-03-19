@@ -26,7 +26,9 @@ class TaskController extends Controller
     public function create()
     {
         $tasks = \App\Task::all();
-        return view('tasks.create',['tasks' => $tasks]);
+        $view = view('tasks.create',['tasks' => $tasks]);
+
+        return $view;
 
 
 
@@ -64,7 +66,11 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        $newTask = \App\Task::find($id);
+
+        $view =view('tasks.show',['newTask'=>$newTask]);
+
+        return $view;
     }
 
     /**
