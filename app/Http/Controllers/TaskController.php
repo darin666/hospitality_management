@@ -68,7 +68,7 @@ class TaskController extends Controller
     {
         $newTask = \App\Task::find($id);
 
-        $view =view('tasks.show',['newTask'=>$newTask]);
+        $view = view('tasks.show',['newTask'=>$newTask]);
 
         return $view;
     }
