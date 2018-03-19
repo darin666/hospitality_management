@@ -13,7 +13,9 @@
             @endforeach
         </ul>
 
-        <a href="{{ action('ReservationController@create', [$shownApartment->id]) }}">Add more reservations for this apartment</a>
+        <a class="btn-primary btn" href="{{ action('ReservationController@create', [$shownApartment->id]) }}">Add more reservations for this apartment</a>
+        <br/>
+        <a class="btn btn-primary" href="{{ action('FormController@create', [$shownApartment->id]) }}">Form for a new guest in this apartment</a>
 
     </div>
 
