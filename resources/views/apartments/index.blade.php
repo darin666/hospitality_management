@@ -7,8 +7,8 @@
             <div class="btn btn-primary">{{$apartment->name}}</div>
         @endforeach
     <a class="btn btn-primary" href="{{ action('ApartmentController@create') }}">Add a new apartment</a>
-    </div>
 
+    </div>
 
 
 @endsection
