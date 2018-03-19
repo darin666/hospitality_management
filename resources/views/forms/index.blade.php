@@ -2,8 +2,9 @@
 
 @section('content')
     <h1>Guest forms</h1>
+    <br/>
     <a href='form/create'>
-        <h3>NEW GUEST</h3>
+        <button type="button" class="btn btn-primary">NEW GUEST</button>
     </a>
     <hr/>
 
