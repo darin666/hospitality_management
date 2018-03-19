@@ -43,8 +43,8 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $newTask = new Task();
+        $newTask->user_id = \Auth::id();
         $newTask->name = $request->get('name');
-        $newTask->user_id = $request->get('user_id');
         $newTask->raisedBy_id = $request->get('raisedBy_id');
         $newTask->apartment_id = $request->get('apartment_id');
         $newTask->status_id = $request->get('status_id');

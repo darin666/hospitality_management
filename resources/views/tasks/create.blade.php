@@ -11,14 +11,6 @@
                     <div class="card-body">
                         <form method="POST" action="{{ action('TaskController@store') }}">
                             {!! csrf_field() !!}
-                            <div class="form-group row">
-                                <label for="user_id" class="col-md-4 col-form-label text-md-right">User ID</label>
-
-                                <div class="col-md-6">
-                                    <input id="user_id" type="number" class="form-control" name="user_id">
-
-                                </div>
-                            </div>
 
                             <div class="form-group row">
                                 <label for="apartment_id" class="col-md-4 col-form-label text-md-right">Apartment ID</label>
@@ -33,7 +25,7 @@
                                 <label for="status_id" class="col-md-4 col-form-label text-md-right">Status ID</label>
 
                                 <div class="col-md-6">
-                                    <input id="status_id" type="number" class="form-control" name="status_id">
+                                    <input id="status_id" type="text" class="form-control" name="status_id" value="1">
 
                                 </div>
                             </div>
