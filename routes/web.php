@@ -27,10 +27,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/apartments/{id}', 'ApartmentController@show')->name('show apartment');
 Route::resource('apartments','ApartmentController');
 
-Route::get('/tasks', 'TaskController@index');
-Route::get('/tasks/create', 'TaskController@create');
-Route::post('/tasks/create', 'TaskController@store');
-Route::get('/tasks/{id}', 'TaskController@show');
+// Route::get('/tasks', 'TaskController@index');
+// Route::get('/tasks/create', 'TaskController@create');
+// Route::post('/tasks/create', 'TaskController@store');
+Route::get('/tasks/{id}', 'TaskController@show')->name('show task');
+Route::resource('tasks', 'TaskController');
 
 Route::get('/reservations', 'ReservationController@index');
 Route::get('/reservations/create', 'ReservationController@create');
