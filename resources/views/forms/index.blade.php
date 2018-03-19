@@ -3,9 +3,7 @@
 @section('content')
     <h1>Guest forms</h1>
     <br/>
-    <a href='form/create'>
-        <button type="button" class="btn btn-primary">NEW GUEST</button>
-    </a>
+    
     <hr/>
 
     @foreach($forms as $form)
