@@ -56,7 +56,10 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $apartment = \App\Apartment::where('id','=',$id)->first();
+
+        $reservations = $apartment->reservations()->get();
+        return view('apartments.show', ['apartment' => $apartment, 'reservations' => $reservations]);
     }
 
     /**
