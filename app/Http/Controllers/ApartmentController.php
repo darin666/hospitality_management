@@ -25,8 +25,8 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        $apartments = \App\Apartment::all();
-        return view('apartments.create', ['apartments' => $apartments]);
+//        $apartments = \App\Apartment::all();
+        return view('apartments.create');
     }
 
     /**
@@ -56,10 +56,12 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
-        $apartment = \App\Apartment::where('id','=',$id)->first();
-
-        $reservations = $apartment->reservations()->get();
-        return view('apartments.show', ['apartment' => $apartment, 'reservations' => $reservations]);
+//        $shownApartment = \App\Apartment::where('id','=',$id)->first();
+//        var_dump($shownApartment);
+//        return $shownApartment;
+//
+//        $shownReservations = $shownApartment->reservations()->get();
+//        return view('apartments.show', ['shownApartment' => $shownApartment, 'shownReservations' => $shownReservations]);
     }
 
     /**
