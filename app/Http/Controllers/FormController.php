@@ -22,8 +22,9 @@ class FormController extends Controller
     public function index()
     {
         $forms = Form::latest('updated_at')->get();
+        $shownApartments = Apartment::all();
 
-        return view ('forms/index', compact('forms'));
+        return view ('forms/index', compact('forms','shownApartments'));
     }
 
     /**
