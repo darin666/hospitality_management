@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Task;
+use App\Apartment;
 
 class TaskController extends Controller
 {
@@ -26,7 +27,9 @@ class TaskController extends Controller
     public function create()
     {
         $tasks = \App\Task::all();
-        $view = view('tasks.create',['tasks' => $tasks]);
+        $apartments = \App\Apartment::all();
+        $view = view('tasks.create',['tasks' => $tasks, 'apartments'=>$apartments]);
+
 
         return $view;
 
@@ -71,6 +74,10 @@ class TaskController extends Controller
         $view = view('tasks.show',['newTask'=>$newTask]);
 
         return $view;
+
+
+
+
     }
 
     /**
