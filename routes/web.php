@@ -37,7 +37,7 @@ Route::get('/reservations', 'ReservationController@index');
 Route::get('/reservations/create', 'ReservationController@create');
 Route::get('/reservations/create/{id}', 'ReservationController@create');
 Route::post('/reservations/create', 'ReservationController@store');
-Route::get('/reservations/{id}', 'ReservationController@show');
+Route::get('/reservations/{id}', 'ReservationController@show')->name('show reservation');
 
 // form routes optimization via resource fn - will generate all routes from the controller according to naming convention
 

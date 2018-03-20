@@ -48,6 +48,7 @@ class ReservationController extends Controller
         $newReservation->checkin_time = $request->get('checkin_time');
         $newReservation->checkout_time = $request->get('checkout_time');
         $newReservation->guest_name = $request->get('guest_name');
+        $newReservation->description = $request->get('description');
         $newReservation->addedBy_id = Auth::id();
         $newReservation->save();
 
@@ -62,7 +63,10 @@ class ReservationController extends Controller
      */
     public function show($id)
     {
-        //
+        $shownReservation = \App\Reservation::find($id);
+
+        $shownApartment = \App\Apartment::find($shownReservation->apartment_id);
+        return view('reservations.show', ['shownApartment' => $shownApartment, 'shownReservation' => $shownReservation]);
     }
 
     /**

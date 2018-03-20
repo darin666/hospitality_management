@@ -69,6 +69,16 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="checkout_time" class="col-md-4 col-form-label text-md-right">Any note?</label>
+
+                                <div class="col-md-6">
+                                    <textarea class="form-control" rows="3" name="description"></textarea>
+                                </div>
+                            </div>
+
+
+
                             <div>
                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
                             </div>
