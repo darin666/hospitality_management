@@ -17,6 +17,9 @@
         <br/>
         <br/>
         <a class="btn btn-primary" href="{{ action('FormController@create', [$shownApartment->id]) }}">Form for a new guest in this apartment</a>
+        <br/>
+        <br/>
+        <a class="btn btn-primary" href="{{ action('TaskController@create', [$shownApartment->id]) }}">Add a new task in this apartment</a>
 
     </div>
 
