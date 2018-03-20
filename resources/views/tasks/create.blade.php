@@ -84,7 +84,7 @@
 
                                 <div class="col-md-6">
                                 <input type="text" class="form-control-file" id="img_link" aria-describedby="text" name="img_link">
-                                <small id="fileHelp" class="form-text text-muted">Please upload image here</small>
+                                <small id="fileHelp" class="form-text text-muted">Please insert link of image here</small>
 
                                 </div>
                             </div>
