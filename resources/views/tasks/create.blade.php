@@ -33,15 +33,6 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="raisedBy_id" class="col-md-4 col-form-label text-md-right">Raised by ID</label>
-
-                                <div class="col-md-6">
-                                    <input id="raisedBy_id" type="number" class="form-control" name="raisedBy_id">
-
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
 
                                 <div class="col-md-6">
