@@ -8,7 +8,6 @@ class Category extends Model
 {
     protected $table = "categories";
 
-
     public function tasks()
     {
         return $this->hasMany('App\Task');
