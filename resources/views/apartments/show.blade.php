@@ -9,7 +9,7 @@
 
         <ul>
             @foreach($shownReservations as $shownReservation)
-                <li>{{$shownReservation -> id}}</li>
+                <li>{{$shownReservation -> guest_name}} from {{$shownReservation->checkin_date}} to {{$shownReservation->checkout_date}}</li>
             @endforeach
         </ul>
 
