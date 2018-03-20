@@ -18,7 +18,9 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = \App\Task::all();
-        return view('tasks.index',['tasks' => $tasks]);
+        $shownApartments = Apartment::all();
+
+        return view('tasks.index',compact('tasks', 'shownApartments'));
     }
 
     /**
