@@ -26,11 +26,10 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $reservations = \App\Reservation::all();
-        $apartments = \App\Apartment::all();
-        return view('reservations.create',['reservations' => $reservations, 'apartments' => $apartments]);
+        $apartment = \App\Apartment::find($id);
+        return view('reservations.create', ['apartment' => $apartment]);
     }
 
     /**

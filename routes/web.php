@@ -35,6 +35,7 @@ Route::get('/tasks/{id}', 'TaskController@show')->name('show task');
 
 Route::get('/reservations', 'ReservationController@index');
 Route::get('/reservations/create', 'ReservationController@create');
+Route::get('/reservations/create/{id}', 'ReservationController@create');
 Route::post('/reservations/create', 'ReservationController@store');
 Route::get('/reservations/{id}', 'ReservationController@show');
 
