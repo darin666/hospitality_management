@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\Reservation;
 use \App\Apartment;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CreateReservationRequest;
 
 
 class ReservationController extends Controller
@@ -38,7 +39,7 @@ class ReservationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateReservationRequest $request)
     {
         $newReservation = new Reservation();
         $newReservation->apartment_id = $request->get('apartment_id');
