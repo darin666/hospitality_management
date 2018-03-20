@@ -24,6 +24,16 @@
 
                             {{--</div>--}}
                             <div class="form-group row">
+                                <label for="checkout_date" class="col-md-4 col-form-label text-md-right">
+                                Guest name
+                                </label>
+
+                                <div class="col-md-6">
+                                    <input id="guest_name" type="text" class="form-control" name="guest_name">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="checkin_date" class="col-md-4 col-form-label text-md-right">Check In date</label>
 
                                 <div class="col-md-6">
@@ -70,4 +80,6 @@
             </div>
         </div>
     </div>
+
+    @include('errors.list')
 @endsection

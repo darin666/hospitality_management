@@ -1,4 +1,3 @@
-        <!-- TEMPORARY -->
         {!! Form::hidden('apartment_id', $shownApartment->id) !!}
 
         <!-- DATE TODAY -->
