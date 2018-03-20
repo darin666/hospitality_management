@@ -7,6 +7,7 @@ use App\Task;
 use App\Apartment;
 use App\Http\Requests\CreateTaskRequest;
 
+
 class TaskController extends Controller
 {
     /**
