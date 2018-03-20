@@ -7,6 +7,7 @@ use App\Apartment;
 use App\Http\Requests;
 use App\Http\Requests\CreateFormRequest;
 use App\Http\Requests\UpdateFormRequest;
+use Illuminate\Support\Facades\Mail;
 
 
 //use Request;
@@ -50,7 +51,11 @@ class FormController extends Controller
     {
         // validation in CreateFormRequest
 
-        Form::create($request->all());
+       $new_form_record = Form::create($request->all());
+
+
+       // sending guest details to the log, destination to be changed after deploying app to the live server
+        Mail::to($request->user())->send(new \App\Mail\ApplyGuestForm($new_form_record));
 
         // might want to use Carbon::now() in the future
 

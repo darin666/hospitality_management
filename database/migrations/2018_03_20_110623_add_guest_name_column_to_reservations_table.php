@@ -14,7 +14,7 @@ class AddGuestNameColumnToReservationsTable extends Migration
     public function up()
     {
         Schema::table('reservations', function (Blueprint $table) {
-            $table->string('guest_name')->nullable();
+            $table->string('guest_name');
         });
     }
 
