@@ -47,6 +47,7 @@ class ReservationController extends Controller
         $newReservation->checkout_date = $request->get('checkout_date');
         $newReservation->checkin_time = $request->get('checkin_time');
         $newReservation->checkout_time = $request->get('checkout_time');
+        $newReservation->guest_name = $request->get('guest_name');
         $newReservation->addedBy_id = Auth::id();
         $newReservation->save();
 
