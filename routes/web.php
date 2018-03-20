@@ -49,3 +49,12 @@ Route::get('/reservations/{id}', 'ReservationController@show');
 
 Route::resource('form', 'FormController');
 Route::get('/form/create/{id}', 'FormController@create');
+
+Route::get('support/categories','CategoryController@create');
+Route::post('support/categories','CategoryController@store');
+
+Route::get('support/roles','RoleController@create');
+Route::post('support/roles','RoleController@store');
+
+Route::get('support/statuses','StatusController@create');
+Route::post('support/statuses','StatusController@store');
