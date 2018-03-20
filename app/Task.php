@@ -8,6 +8,16 @@ class Task extends Model
 {
     protected $table = "tasks";
 
+    protected $fillable =
+    ['apartment_id',
+    'status_id',
+    'name',
+    'category_id',
+    'statusChange_id',
+    'description',
+    'img_link',
+    ];
+
 
     public function statusChanges()
     {
