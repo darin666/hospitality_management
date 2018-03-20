@@ -9,7 +9,9 @@
         {{$newTask->description}}
         <br>
         @foreach($shownApartments as $shownApartment)
+            @if($newTask->apartment_id == $shownApartment->id)
             {{ $shownApartment->name }}
+            @endif
         @endforeach
         </a>
         <br>
