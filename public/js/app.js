@@ -53655,6 +53655,7 @@ var Apartments = function (_Component) {
             }).then(function (apartments) {
                 //Fetched product is stored in the state
                 _this2.setState({ apartments: apartments });
+                console.log(apartments);
             });
         }
     }, {
@@ -53662,12 +53663,15 @@ var Apartments = function (_Component) {
         value: function renderApartments() {
 
             return this.state.apartments.map(function (apartment) {
-                // let apartmentclassname = 'btn-success';
-                // if({apartment.status_id} == 3){
-                //     apartmentclassname = 'btn-success';
-                // } else {
-                //     apartmentclassname = 'btn-danger';
-                // }
+                var apartmentclassname = 'btn-success';
+                if (apartment.status_id == 2) {
+                    apartmentclassname = 'btn-success';
+                } else if (apartment.status_id == 1) {
+                    apartmentclassname = 'btn-warning';
+                } else {
+                    apartmentclassname = 'btn-danger';
+                }
+
                 return (
 
                     /* When using list you need to specify a key
@@ -53676,12 +53680,10 @@ var Apartments = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { key: apartment.id, className: 'd-flex' },
-                        apartment.status_id,
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__["a" /* default */], null),
-                        ' ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
-                            { className: 'btn btn-success' },
+                            { className: 'btn ' + apartmentclassname },
                             apartment.name
                         )
                     )
