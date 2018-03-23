@@ -53660,19 +53660,28 @@ var Apartments = function (_Component) {
     }, {
         key: 'renderApartments',
         value: function renderApartments() {
+
             return this.state.apartments.map(function (apartment) {
+                // let apartmentclassname = 'btn-success';
+                // if({apartment.status_id} == 3){
+                //     apartmentclassname = 'btn-success';
+                // } else {
+                //     apartmentclassname = 'btn-danger';
+                // }
                 return (
+
                     /* When using list you need to specify a key
                      * attribute that is unique for each list item
                     */
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'li',
-                        { key: apartment.id },
+                        'div',
+                        { key: apartment.id, className: 'd-flex' },
+                        apartment.status_id,
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__["a" /* default */], null),
                         ' ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
-                            { className: 'btn btn-primary' },
+                            { className: 'btn btn-success' },
                             apartment.name
                         )
                     )

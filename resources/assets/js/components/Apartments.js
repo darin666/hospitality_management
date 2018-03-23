@@ -27,15 +27,28 @@ export default class Apartments extends Component {
     }
 
     renderApartments() {
+
+
         return this.state.apartments.map(apartment => {
+            // let apartmentclassname = 'btn-success';
+            // if({apartment.status_id} == 3){
+            //     apartmentclassname = 'btn-success';
+            // } else {
+            //     apartmentclassname = 'btn-danger';
+            // }
             return (
+
                 /* When using list you need to specify a key
                  * attribute that is unique for each list item
                 */
-                <li key={apartment.id} >
-                    <StatusButton/> <div className={'btn btn-primary'}>{ apartment.name }</div>
-                </li>
-            );
+                    <div key={apartment.id} className={'d-flex'}>
+                        {apartment.status_id}
+                        <StatusButton/> <div className={'btn btn-success'}>{ apartment.name }</div>
+                    </div>
+
+                );
+
+
         })
     }
 
