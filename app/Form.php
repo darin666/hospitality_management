@@ -18,7 +18,7 @@ class Form extends Model
     'checkInDate',
     'checkOutDate',
     'nationality',
-    'apartment_id',]; // temporary
+    'apartment_id',];
 
 
     public function statusChanges()

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\Reservation;
 use \App\Apartment;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CreateReservationRequest;
 
 
 class ReservationController extends Controller
@@ -26,11 +27,10 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $reservations = \App\Reservation::all();
-        $apartments = \App\Apartment::all();
-        return view('reservations.create',['reservations' => $reservations, 'apartments' => $apartments]);
+        $apartment = \App\Apartment::find($id);
+        return view('reservations.create', ['apartment' => $apartment]);
     }
 
     /**
@@ -39,7 +39,7 @@ class ReservationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateReservationRequest $request)
     {
         $newReservation = new Reservation();
         $newReservation->apartment_id = $request->get('apartment_id');
@@ -47,6 +47,8 @@ class ReservationController extends Controller
         $newReservation->checkout_date = $request->get('checkout_date');
         $newReservation->checkin_time = $request->get('checkin_time');
         $newReservation->checkout_time = $request->get('checkout_time');
+        $newReservation->guest_name = $request->get('guest_name');
+        $newReservation->description = $request->get('description');
         $newReservation->addedBy_id = Auth::id();
         $newReservation->save();
 
@@ -61,7 +63,10 @@ class ReservationController extends Controller
      */
     public function show($id)
     {
-        //
+        $shownReservation = \App\Reservation::find($id);
+
+        $shownApartment = \App\Apartment::find($shownReservation->apartment_id);
+        return view('reservations.show', ['shownApartment' => $shownApartment, 'shownReservation' => $shownReservation]);
     }
 
     /**

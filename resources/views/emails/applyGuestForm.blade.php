@@ -1,0 +1,10 @@
+firstname: {{ $form->firstname }} <br>
+lastname: {{ $form->lastname }} <br>,
+dob: {{ $form->dob }} <br>
+address: {{ $form->address }} <br>
+passportNumber: {{ $form->passportNumber }} <br>
+visaNumber: {{ $form->visaNumber }} <br>
+checkInDate: {{ $form->checkInDate }} <br>
+checkOutDate: {{ $form->checkOutDate }} <br>
+nationality: {{ $form->nationality }} <br>
+apartment_id: {{ $form->apartment_id }} <br>

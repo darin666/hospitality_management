@@ -6,22 +6,33 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Add a new Reservation</div>
+                    <div class="card-header">Add a new Reservation for flat {{$apartment->name}}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ action('ReservationController@store') }}">
                             {!! csrf_field() !!}
-                            <div class="form-group row">
-                                <label for="apartment_id" class="col-md-4 col-form-label text-md-right">Apartment</label>
-                                <div class="col-md-6">
-                                    <select name="apartment_id">
-                                        @foreach($apartments as $apartment)
-                                            <option value="{{$apartment->id}}">{{$apartment->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                            {!! Form::hidden('apartment_id', $apartment->id) !!}
+                            {{--<div class="form-group row">--}}
+                                {{--<label for="apartment_id" class="col-md-4 col-form-label text-md-right">Apartment</label>--}}
+                                {{--<div class="col-md-6">--}}
+                                    {{--<select name="apartment_id">--}}
+                                        {{--@foreach($apartments as $apartment)--}}
+                                            {{--<option value="{{$apartment->id}}">{{$apartment->name}}</option>--}}
+                                        {{--@endforeach--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
 
+                            {{--</div>--}}
+                            <div class="form-group row">
+                                <label for="checkout_date" class="col-md-4 col-form-label text-md-right">
+                                Guest name
+                                </label>
+
+                                <div class="col-md-6">
+                                    <input id="guest_name" type="text" class="form-control" name="guest_name">
+                                </div>
                             </div>
+
                             <div class="form-group row">
                                 <label for="checkin_date" class="col-md-4 col-form-label text-md-right">Check In date</label>
 
@@ -58,6 +69,16 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="checkout_time" class="col-md-4 col-form-label text-md-right">Any note?</label>
+
+                                <div class="col-md-6">
+                                    <textarea class="form-control" rows="3" name="description"></textarea>
+                                </div>
+                            </div>
+
+
+
                             <div>
                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
                             </div>
@@ -69,4 +90,6 @@
             </div>
         </div>
     </div>
+
+    @include('errors.list')
 @endsection

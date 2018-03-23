@@ -35,8 +35,9 @@ Route::get('/tasks/{id}', 'TaskController@show')->name('show task');
 
 Route::get('/reservations', 'ReservationController@index');
 Route::get('/reservations/create', 'ReservationController@create');
+Route::get('/reservations/create/{id}', 'ReservationController@create');
 Route::post('/reservations/create', 'ReservationController@store');
-Route::get('/reservations/{id}', 'ReservationController@show');
+Route::get('/reservations/{id}', 'ReservationController@show')->name('show reservation');
 
 // form routes optimization via resource fn - will generate all routes from the controller according to naming convention
 
@@ -48,3 +49,12 @@ Route::get('/reservations/{id}', 'ReservationController@show');
 
 Route::resource('form', 'FormController');
 Route::get('/form/create/{id}', 'FormController@create');
+
+Route::get('support/categories','CategoryController@create');
+Route::post('support/categories','CategoryController@store');
+
+Route::get('support/roles','RoleController@create');
+Route::post('support/roles','RoleController@store');
+
+Route::get('support/statuses','StatusController@create');
+Route::post('support/statuses','StatusController@store');

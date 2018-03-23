@@ -3,11 +3,12 @@
 @section('content')
     <div class="container">
         Display all the reservations we have.
+        <ul>
         @foreach($reservations as $reservation)
-            <div class="btn btn-primary">{{$reservation->id}}</div>
+            <a class="btn btn-success mt-2" href="{{ route('show reservation',['id'=>$reservation->id]) }}">{{$reservation->guest_name}}</a>
+            <span>From {{$reservation->checkin_date}} to {{$reservation->checkout_date}}</span><br/>
         @endforeach
-        <a class="btn btn-primary" href="{{ action('ReservationController@create') }}">Add a new reservation</a>
-
+        </ul>
     </div>
 
 

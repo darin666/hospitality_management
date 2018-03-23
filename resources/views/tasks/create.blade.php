@@ -11,30 +11,23 @@
                     <div class="card-body">
                         <form method="POST" action="{{ action('TaskController@store') }}">
                             {!! csrf_field() !!}
-
                             <div class="form-group row">
-                                <label for="apartment_id" class="col-md-4 col-form-label text-md-right">Apartment ID</label>
-
-                                <div class="col-md-6">
-                                    <input id="apartment_id" type="number" class="form-control" name="apartment_id">
-
-                                </div>
+                            <label for="apartment_id" class="col-md-4 col-form-label text-md-right">Apartment</label>
+                            <div class="col-md-6">
+                                <select name="apartment_id">
+                                    @foreach($apartments as $apartment)
+                                        <option value="{{$apartment->id}}">{{$apartment->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
+
+                        </div>
 
                             <div class="form-group row">
                                 <label for="status_id" class="col-md-4 col-form-label text-md-right">Status ID</label>
 
                                 <div class="col-md-6">
                                     <input id="status_id" type="text" class="form-control" name="status_id" value="1">
-
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="raisedBy_id" class="col-md-4 col-form-label text-md-right">Raised by ID</label>
-
-                                <div class="col-md-6">
-                                    <input id="raisedBy_id" type="number" class="form-control" name="raisedBy_id">
 
                                 </div>
                             </div>
@@ -82,7 +75,7 @@
 
                                 <div class="col-md-6">
                                 <input type="text" class="form-control-file" id="img_link" aria-describedby="text" name="img_link">
-                                <small id="fileHelp" class="form-text text-muted">Please upload image here</small>
+                                <small id="fileHelp" class="form-text text-muted">Please insert link of image here</small>
 
                                 </div>
                             </div>
@@ -98,4 +91,5 @@
             </div>
         </div>
     </div>
+    @include('errors.list')
 @endsection
