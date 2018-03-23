@@ -53612,7 +53612,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__StatusButton__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__ = __webpack_require__(67);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53668,7 +53668,7 @@ var Apartments = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'li',
                         { key: apartment.id },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__StatusButton__["a" /* default */], null),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__["a" /* default */], null),
                         ' ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
@@ -53705,10 +53705,11 @@ var Apartments = function (_Component) {
 /* harmony default export */ __webpack_exports__["default"] = (Apartments);
 
 
-__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__StatusButton__["a" /* default */], null), document.getElementById('app'));
+__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__["a" /* default */], null), document.getElementById('app'));
 
 /***/ }),
-/* 66 */
+/* 66 */,
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53730,17 +53731,32 @@ var StatusButton = function (_Component) {
     function StatusButton() {
         _classCallCheck(this, StatusButton);
 
-        return _possibleConstructorReturn(this, (StatusButton.__proto__ || Object.getPrototypeOf(StatusButton)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (StatusButton.__proto__ || Object.getPrototypeOf(StatusButton)).call(this));
+
+        _this.state = {
+            status: 'cross'
+        };
+        return _this;
     }
 
     _createClass(StatusButton, [{
         key: 'render',
         value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'h1',
-                null,
-                'This is a button'
-            );
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'statusbutton ' + this.state.status, onClick: this.flip.bind(this) });
+        }
+    }, {
+        key: 'flip',
+        value: function flip() {
+            console.log('flip');
+            if (this.state.status == 'cross') {
+                this.setState({
+                    status: 'check'
+                });
+            } else if (this.state.status == 'check') {
+                this.setState({
+                    status: 'cross'
+                });
+            }
         }
     }]);
 

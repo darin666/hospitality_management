@@ -12,3 +12,22 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+.statusbutton {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  transition: 400ms;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.check {
+  background-image: url('/img/check.svg');
+}
+
+.cross {
+  background-image: url('/img/cross.svg');
+}
+
+
