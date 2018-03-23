@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Main from "./components/Main";
+import Apartments from "./components/Apartments";
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -16,7 +16,7 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/Main');
+require('./components/Apartments');
 
 
-ReactDOM.render(<Main />, document.getElementById('app'));
+ReactDOM.render(<Apartments />, document.getElementById('app'));

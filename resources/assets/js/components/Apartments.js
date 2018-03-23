@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import StatusButton from './StatusButton';
 
-export default class Main extends Component {
+export default class Apartments extends Component {
 
     constructor() {
         super();
@@ -14,7 +15,6 @@ export default class Main extends Component {
      * that gets called after the component is rendered
      */
     componentDidMount() {
-        console.log('asd');
         /* fetch API in action */
         fetch('/apartments')
             .then(response => {
@@ -32,8 +32,8 @@ export default class Main extends Component {
                 /* When using list you need to specify a key
                  * attribute that is unique for each list item
                 */
-                <li key={apartment.id} className={'btn btn-primary'}>
-                    { apartment.name }
+                <li key={apartment.id} >
+                    <StatusButton/> <div className={'btn btn-primary'}>{ apartment.name }</div>
                 </li>
             );
         })
@@ -44,10 +44,12 @@ export default class Main extends Component {
             <div>
                 <h2>All Apartments</h2>
                 <ul>
-                    { this.renderApartments() }
+                 { this.renderApartments() }
                 </ul>
             </div>
 
         );
     }
 }
+
+ReactDOM.render(<StatusButton />, document.getElementById('app'));
