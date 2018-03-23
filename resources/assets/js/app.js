@@ -1,3 +1,6 @@
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Main from "./components/Main";
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -13,4 +16,7 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/Example');
+require('./components/Main');
+
+
+ReactDOM.render(<Main />, document.getElementById('app'));
