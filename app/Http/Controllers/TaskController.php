@@ -18,10 +18,11 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = \App\Task::all();
-        $shownApartments = Apartment::all();
-
-        return view('tasks.index',compact('tasks', 'shownApartments'));
+//        $tasks = \App\Task::all();
+//        $shownApartments = Apartment::all();
+//
+//        return view('tasks.index',compact('tasks', 'shownApartments'));
+        return Task::all();
     }
 
     /**
