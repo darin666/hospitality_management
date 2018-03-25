@@ -73,6 +73,22 @@ class ReservationController extends Controller
         $newTask->description = 'Generated automatically. (Notes:) ' . $request->get('description');
         $newTask->save();
 
+//        t - new task()
+//        t.setParams(params)
+//        t = Task.createTask(params)
+
+        $apartment = \App\Apartment::find($request->get('apartment_id'));
+
+        $newTask = new Task();
+        $newTask->user_id = \Auth::id(); //Only Manager can create new reservations
+        $newTask->name = 'Clean apartment ' . $apartment->name;
+        $newTask->raisedBy_id = \Auth::id();
+        $newTask->apartment_id = $request->get('apartment_id');
+        $newTask->status_id = 0;
+        $newTask->category_id = 0;
+        $newTask->description = 'Generated automatically. (Notes:) ' . $request->get('description');
+        $newTask->save();
+
         return redirect(action('ReservationController@index'));
     }
 
