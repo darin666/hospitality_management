@@ -55,12 +55,22 @@ class ReservationController extends Controller
 
         $newTask = new Task();
         $newTask->user_id = \Auth::id(); //Only Manager can create new reservations
-        $newTask->name = 'Check guest in on ' . $request->get('checkin_date');
+        $newTask->name = 'Check '. $request->get('guest_name'). ' in on ' . $request->get('checkin_date');
         $newTask->raisedBy_id = \Auth::id();
         $newTask->apartment_id = $request->get('apartment_id');
         $newTask->status_id = 0;
         $newTask->category_id = 0;
         $newTask->description = 'Generated automatically. Notes: ' . $request->get('description');
+        $newTask->save();
+
+        $newTask = new Task();
+        $newTask->user_id = \Auth::id(); //Only Manager can create new reservations
+        $newTask->name = 'Check '. $request->get('guest_name'). ' out on ' . $request->get('checkout_date');
+        $newTask->raisedBy_id = \Auth::id();
+        $newTask->apartment_id = $request->get('apartment_id');
+        $newTask->status_id = 0;
+        $newTask->category_id = 0;
+        $newTask->description = 'Generated automatically. (Notes:) ' . $request->get('description');
         $newTask->save();
 
         return redirect(action('ReservationController@index'));
