@@ -15,13 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-// DONT TOUCH THIS
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/api/apartments','ApartmentAPIController@index');
+Route::get('/api/tasks','TaskAPIController@index');
 
 Route::get('/apartments', 'ApartmentController@index');
 Route::get('/apartments/create', 'ApartmentController@create');
