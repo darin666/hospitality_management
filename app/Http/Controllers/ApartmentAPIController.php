@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use \App\Apartment;
 
-use App\Apartment;
 use Illuminate\Http\Request;
 
-class ApartmentController extends Controller
+class ApartmentAPIController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-//        return Apartment::all();
-        $apartments = \App\Apartment::all();
-        return view('apartments.index',['apartments' => $apartments ]);
+        return Apartment::all();
     }
 
     /**
@@ -26,8 +24,7 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-//        $apartments = \App\Apartment::all();
-        return view('apartments.create');
+        //
     }
 
     /**
@@ -38,15 +35,7 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $newApartment = new Apartment();
-        $newApartment->name = $request->get('name');
-        $newApartment->address = $request->get('address');
-        $newApartment->status_id = $request->get('status_id');
-        $newApartment->key_counts = $request->get('key_counts');
-        $newApartment->img_link = $request->get('img_link');
-        $newApartment->save();
-
-        return redirect(action('ApartmentController@index'));
+        //
     }
 
     /**
@@ -57,10 +46,7 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
-        $shownApartment = \App\Apartment::find($id);
-
-        $shownReservations = $shownApartment->reservations()->get();
-        return view('apartments.show', ['shownApartment' => $shownApartment, 'shownReservations' => $shownReservations]);
+        //
     }
 
     /**

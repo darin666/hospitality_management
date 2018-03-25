@@ -21,6 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/api/apartments','ApartmentAPIController@index');
+
 Route::get('/apartments', 'ApartmentController@index');
 Route::get('/apartments/create', 'ApartmentController@create');
 Route::post('/apartments/create', 'ApartmentController@store');
