@@ -1,18 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-    Display all the flats we have.
-        @foreach($apartments as $apartment)
+    <h1>Apartments</h1><hr>
 
+    <div class="row">
 
-                <a class="btn btn-success" href="{{ route('show apartment',['id'=>$apartment->id]) }}">{{$apartment->name}}</a>
+        @include('tasks.mytasks')
 
+        <div class="col-sm-8">
+            @foreach($shownApartments as $shownApartment)
+                <div class="mb-3">
+                    <a class="btn btn-success" href="{{ route('show apartment',['id'=>$shownApartment->id]) }}">
+                    {{$shownApartment->name}}</a>
+                </div>
+            @endforeach
 
-        @endforeach
-    <a class="btn btn-primary" href="{{ action('ApartmentController@create') }}">Add a new apartment</a>
-
+            <div>
+                <a class="btn btn-primary" href="{{ action('ApartmentController@create') }}">Add a new apartment</a>
+            </div>
+        </div>
     </div>
-
 
 @endsection

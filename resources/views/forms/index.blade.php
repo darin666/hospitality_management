@@ -1,10 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Guest forms</h1>
-    <br/>
-    
-    <hr/>
+    <h1>Guest forms</h1><hr/>
+
     @foreach($shownApartments as $shownApartment)
 
         <h2>{{$shownApartment->name}}</h2>
