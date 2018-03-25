@@ -60,7 +60,6 @@ class ReservationController extends Controller
         $newTask->apartment_id = $request->get('apartment_id');
         $newTask->status_id = 0;
         $newTask->category_id = 0;
-        $newTask->statusChange_id = $request->get('statusChange_id');
         $newTask->description = 'Generated automatically. Notes: ' . $request->get('description');
         $newTask->save();
 

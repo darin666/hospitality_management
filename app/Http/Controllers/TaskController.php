@@ -57,7 +57,6 @@ class TaskController extends Controller
         $newTask->apartment_id = $request->get('apartment_id');
         $newTask->status_id = $request->get('status_id');
         $newTask->category_id = $request->get('category_id');
-        $newTask->statusChange_id = $request->get('statusChange_id');
         $newTask->description = $request->get('description');
         $newTask->img_link = $request->get('img_link');
         $newTask->save();
