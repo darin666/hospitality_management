@@ -31,6 +31,7 @@
                         <li><a class="nav-link" href="{{ action('ApartmentController@index') }}">Apartments</a></li>
                         <li><a class="nav-link" href="{{ action('TaskController@index') }}">Tasks</a></li>
                         <li><a class="nav-link" href="{{ action('FormController@index') }}">Forms</a></li>
+                        <li><a class="nav-link" href="{{ action('EventController@index') }}">Calendar</a></li>
 
                     </ul>
 
