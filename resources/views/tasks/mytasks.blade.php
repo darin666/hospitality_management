@@ -3,7 +3,7 @@
 
     @foreach($tasks as $newTask)
         @if(Auth::user()->id == $newTask->user_id)
-            <div class="mt-4">
+            <div class="mt-4 mb-3">
                 <a class="btn btn-danger" href="{{ route('show task',['id'=>$newTask->id]) }}">{{$newTask->name}}
             <br>
             {{$newTask->description}}

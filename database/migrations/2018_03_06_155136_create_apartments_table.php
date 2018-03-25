@@ -18,7 +18,7 @@ class CreateApartmentsTable extends Migration
             $table->integer('status_id');
             $table->string('name');
             $table->text('address');
-            $table->text('img_link');
+            $table->text('img_link')->nullable();
             $table->integer('key_counts');
             $table->timestamps();
         });
