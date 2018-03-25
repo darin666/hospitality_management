@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Apartments from "./components/Apartments";
+import NavComponent from'./components/NavComponent';
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -19,4 +20,4 @@ require('./bootstrap');
 require('./components/Apartments');
 
 
-ReactDOM.render(<Apartments />, document.getElementById('app'));
+ReactDOM.render([<Apartments />], document.getElementById('app'));

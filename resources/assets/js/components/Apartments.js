@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import StatusButton from './statusToggle/StatusButton';
+import NavComponent from'./NavComponent';
 
 export default class Apartments extends Component {
 
@@ -28,8 +29,6 @@ export default class Apartments extends Component {
     }
 
     renderApartments() {
-
-
         return this.state.apartments.map(apartment => {
             let apartmentclassname = 'btn-success';
             if(apartment.status_id == 2){
@@ -42,15 +41,14 @@ export default class Apartments extends Component {
 
             return (
 
-                /* When using list you need to specify a key
-                 * attribute that is unique for each list item
-                */
+                <div>
                     <div key={apartment.id} className={'d-flex'}>
                         {/*{apartment.status_id}*/}
-                        <StatusButton/>
-                        <div className={'btn ' + apartmentclassname}>{ apartment.name }</div>
+                        {/*<StatusButton/>*/}
+                        <div className={'btn ' + apartmentclassname} onClick={''}>{ apartment.name} </div>
                     </div>
 
+                </div>
                 );
         })
     }
