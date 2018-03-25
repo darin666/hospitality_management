@@ -17,7 +17,7 @@ export default class Apartments extends Component {
      */
     componentDidMount() {
         /* fetch API in action */
-        fetch('/apartments')
+        fetch('/api/apartments')
             .then(response => {
                 return response.json();
             })
