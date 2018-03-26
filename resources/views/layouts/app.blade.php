@@ -9,10 +9,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!-- @yield('style') -->
+    @yield('head-script')
+
+    @yield('style')
 </head>
 <body>
     <div id="app">
@@ -70,10 +71,6 @@
         </main>
     </div>
 
-    <!-- Scripts -->
-        <!-- <main class="container py-4">
-            @yield('script')
-        </main> -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    @yield('script')
 </body>
 </html>

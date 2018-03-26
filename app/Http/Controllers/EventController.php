@@ -23,7 +23,7 @@ class EventController extends Controller
                     // Add color and link on event
 	                [
 	                    'color' => '#f05050',
-	                    'url' => 'http://full-calendar.io',
+	                    'url' => '',
 	                ]
                 );
             }
