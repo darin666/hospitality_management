@@ -45,7 +45,7 @@ Route::get('/reservations/{id}', 'ReservationController@show')->name('show reser
 // Route::get('/form/create', 'FormController@create');
 // Route::get('/form/{id}', 'FormController@show');
 // Route::post('/form', 'FormController@store');
-//Route::get('/form/{id}/edit', 'FormController@edit');
+// Route::get('/form/{id}/edit', 'FormController@edit');
 
 Route::resource('form', 'FormController');
 Route::get('/form/create/{id}', 'FormController@create');
@@ -58,3 +58,6 @@ Route::post('support/roles','RoleController@store');
 
 Route::get('support/statuses','StatusController@create');
 Route::post('support/statuses','StatusController@store');
+
+// route for events = Calendar
+Route::get('events', 'EventController@index');
