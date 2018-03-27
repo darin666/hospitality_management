@@ -14,13 +14,36 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="bg-dark">
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="flex-center position-ref full-height">
+                @if (Route::has('login'))
+                    <div class="top-right links">
+                        @auth
+                            <a class="navbar-brand" href="{{ url('/home') }}">Hospitality Management App</a>
+                        @else
+                            {{--<a href="{{ route('login') }}">Login</a>--}}
+                            {{--<a href="{{ route('register') }}">Register</a>--}}
+                        @endauth
+                    </div>
+                @endif
+
+                {{--<div class="content">--}}
+                {{--<div class="title m-b-md">--}}
+                {{--Hospitality Management--}}
+                {{--</div>--}}
+
+                {{--<div class="links">--}}
+                {{--In progress...--}}
+                {{--</div>--}}
+                {{--</div>--}}
+            </div>
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                {{--<a class="navbar-brand" href="{{ url('/') }}">--}}
                     {{--{{ config('app.name', 'Laravel') }}--}}
-                    Hospitality Management App
-                </a>
+                    {{--Hospitality Management App--}}
+                {{--</a>--}}
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

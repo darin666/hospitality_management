@@ -1,8 +1,9 @@
-@extends('layouts.app-notloggedin')
+@extends('layouts.app')
 
 @section('content')
+
 <div class="container">
-    <div class="row justify-content-md-end">
+    <div class="row justify-content-md-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
@@ -57,10 +58,9 @@
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
-                                <a class="btn btn-link" href="{{route('register')}}">
-                                    Don't have an Account?
-                                </a>
-
+                                {{--<a class="btn btn-link" href="{{route('register')}}">--}}
+                                    {{--Don't have an Account?--}}
+                                {{--</a>--}}
                             </div>
                         </div>
                     </form>
