@@ -1,18 +1,24 @@
 @extends('layouts.app')
 
-<form method="post" action="{{route('users.update', $user)}}">
+@section ('content')
+
+<h4>Edit {!! $user->name !!}'s role</h4>
+
+{!! Form::model($user, ['method' => 'PATCH', 'action' => ['UserController@update', $user->id]]) !!}
+
+
     {{ csrf_field() }}
     {{ method_field('patch') }}
 
+    <input type="text" name="role"  value="{{ $user->role_id }}" placeholder="insert role id" />
+    <input type="tel" name="tel"  value="{{ $user->tel }}" />
 
 
-    <input type="text" name="name"  value="{{ $user->name }}" />
+    <button type="submit" class="btn btn-primary">
+                                    {{ __('Update') }}
+                                </button>
 
-    <input type="email" name="email"  value="{{ $user->email }}" />
 
-    <input type="password" name="password" />
+    {!! Form::close() !!}
 
-    <input type="password" name="password_confirmation" />
-
-    <button type="submit">Send</button>
-</form>
+@endsection

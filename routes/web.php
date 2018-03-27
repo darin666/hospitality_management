@@ -58,3 +58,9 @@ Route::post('support/roles','RoleController@store');
 
 Route::get('support/statuses','StatusController@create');
 Route::post('support/statuses','StatusController@store');
+
+// Route::get('/user', 'UserController@edit');
+// Route::get('/users', 'UserController@index');
+// Route::get('/users/{id}', 'UserController@show');
+// Route::get('users/{id}/edit', 'UserController@edit');
+Route::resource('users', 'UserController');

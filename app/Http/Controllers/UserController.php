@@ -15,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = \App\User::all();
+        return view ('users.index', compact('users'));
     }
 
     /**
@@ -47,7 +48,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = \App\User::findOrFail($id);
+
+        return view('users.show', compact('user'));
+
     }
 
     /**
@@ -58,10 +62,15 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $form = User::findOrFail($id);
 
+        $user = \App\User::findOrFail($id);
 
-        return view('users/edit');
+        if(auth()->user()->id !== 1){
+            return redirect ('users.index')->with('error', 'You are not authorized');
+        }
+
+        return view('users.edit', compact('user'));
+
     }
 
     /**
@@ -73,11 +82,11 @@ class UserController extends Controller
      */
     public function update($id, UpdateUserRequest $request)
     {
-        $user = User::findOrFail($id);
+        $user = \App\User::findOrFail($id);
 
         $user->update($request->all());
 
-        return redirect('users/edit');
+        return redirect('users.index');
     }
 
     /**
