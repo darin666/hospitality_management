@@ -953,26 +953,48 @@ var Apartments = function (_Component) {
         key: 'renderApartments',
         value: function renderApartments() {
             return this.state.apartments.map(function (apartment) {
-                var apartmentclassname = 'btn-success';
+                var apartmentclassname = 'success';
                 if (apartment.status_id == 2) {
-                    apartmentclassname = 'btn-success';
+                    apartmentclassname = 'success';
                 } else if (apartment.status_id == 1) {
-                    apartmentclassname = 'btn-warning';
+                    apartmentclassname = 'warning';
                 } else {
-                    apartmentclassname = 'btn-danger';
+                    apartmentclassname = 'danger';
+                }
+
+                var apartmentStatus = 'NOT ready';
+
+                if (apartment.status_id == 2) {
+                    apartmentStatus = 'ready';
                 }
 
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    null,
+                    { className: 'card text-white mb-3 bg-' + apartmentclassname },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: "" + apartment.img_link, alt: '', className: 'card-img-top' }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { key: apartment.id, className: 'd-flex' },
+                        { key: apartment.id, className: 'card-body' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'h5',
+                            { className: 'card-title' },
+                            apartment.name
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'p',
+                            { className: 'card-text' },
+                            apartment.address
+                        ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
-                            { className: 'btn ' + apartmentclassname, onClick: '' },
-                            apartment.name,
-                            ' '
+                            { className: 'card-footer' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'small',
+                                { className: 'text-white' },
+                                'Is ',
+                                apartmentStatus,
+                                ' for checkIn.'
+                            )
                         )
                     )
                 );
@@ -983,15 +1005,15 @@ var Apartments = function (_Component) {
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                null,
+                { className: 'container' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h2',
                     null,
                     'All Apartments'
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'ul',
-                    null,
+                    'div',
+                    { className: 'card-deck' },
                     this.renderApartments()
                 )
             );

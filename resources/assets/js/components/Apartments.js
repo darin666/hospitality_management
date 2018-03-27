@@ -30,22 +30,34 @@ export default class Apartments extends Component {
 
     renderApartments() {
         return this.state.apartments.map(apartment => {
-            let apartmentclassname = 'btn-success';
+            let apartmentclassname = 'success';
             if(apartment.status_id == 2){
-                apartmentclassname = 'btn-success';
+                apartmentclassname = 'success';
             } else if(apartment.status_id == 1) {
-                apartmentclassname = 'btn-warning';
+                apartmentclassname = 'warning';
             } else {
-                apartmentclassname = 'btn-danger';
+                apartmentclassname = 'danger';
+            }
+
+            let apartmentStatus = 'NOT ready';
+
+            if(apartment.status_id == 2){
+                apartmentStatus = 'ready';
             }
 
             return (
 
-                <div>
-                    <div key={apartment.id} className={'d-flex'}>
+                <div className={'card text-white mb-3 bg-' + apartmentclassname}>
+                    <img src={""+ apartment.img_link} alt="" className={'card-img-top'}/>
+                    <div key={apartment.id} className={'card-body'}>
+                        <h5 className={'card-title'}>{apartment.name}</h5>
+                        <p className={'card-text'}>{apartment.address}</p>
+                        <div className={'card-footer'}>
+                            <small className={'text-white'}>Is {apartmentStatus} for checkIn.</small>
+                        </div>
                         {/*{apartment.status_id}*/}
                         {/*<StatusButton/>*/}
-                        <div className={'btn ' + apartmentclassname} onClick={''}>{ apartment.name} </div>
+                        {/*<div className={'btn ' + apartmentclassname} onClick={''}>{ apartment.name} </div>*/}
                     </div>
 
                 </div>
@@ -55,11 +67,11 @@ export default class Apartments extends Component {
 
     render() {
         return (
-            <div>
+            <div className={'container'}>
                 <h2>All Apartments</h2>
-                <ul>
+                <div className={'card-deck'}>
                  { this.renderApartments() }
-                </ul>
+                </div>
             </div>
 
         );
