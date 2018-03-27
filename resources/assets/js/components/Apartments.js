@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import StatusButton from './statusToggle/StatusButton';
-import NavComponent from'./NavComponent';
 
 export default class Apartments extends Component {
 
@@ -31,9 +30,9 @@ export default class Apartments extends Component {
     renderApartments() {
         return this.state.apartments.map(apartment => {
             let apartmentclassname = 'success';
-            if(apartment.status_id == 2){
+            if(apartment.status_id === 2){
                 apartmentclassname = 'success';
-            } else if(apartment.status_id == 1) {
+            } else if(apartment.status_id === 1) {
                 apartmentclassname = 'warning';
             } else {
                 apartmentclassname = 'danger';
@@ -41,26 +40,34 @@ export default class Apartments extends Component {
 
             let apartmentStatus = 'NOT ready';
 
-            if(apartment.status_id == 2){
-                apartmentStatus = 'ready';
+            if(apartment.status_id === 2){
+                apartmentStatus = 'READY';
             }
 
             return (
 
                 <div className={'card text-white mb-3 bg-' + apartmentclassname}>
-                    <img src={""+ apartment.img_link} alt="" className={'card-img-top'}/>
+                    <a href={"/apartments/"+apartment.id}><img src={""+ apartment.img_link} alt="" className={'card-img-top'}/></a>
                     <div key={apartment.id} className={'card-body'}>
+                        <div className={'row'}>
+                        <div className={'col-lg-6'}>
                         <h5 className={'card-title'}>{apartment.name}</h5>
+                        </div>
+                        <div className={'col-lg-6'}>
+                        <a className={'card-link d-flex justify-content-end'} href={"/form/create/"+apartment.id}><button className={'btn btn-secondary'}>Guest Form</button></a>
+                        </div>
+                        </div>
                         <p className={'card-text'}>{apartment.address}</p>
+
                         <div className={'card-footer'}>
-                            <small className={'text-white'}>Is {apartmentStatus} for checkIn.</small>
+                            <small className={'text-white'}>{apartmentStatus} for checkIn.</small>
                         </div>
                         {/*{apartment.status_id}*/}
                         {/*<StatusButton/>*/}
                         {/*<div className={'btn ' + apartmentclassname} onClick={''}>{ apartment.name} </div>*/}
                     </div>
-
                 </div>
+
                 );
         })
     }
@@ -68,7 +75,8 @@ export default class Apartments extends Component {
     render() {
         return (
             <div className={'container'}>
-                <h2>All Apartments</h2>
+                <h2 className={'m-4 text-center'}>All Apartments</h2>
+
                 <div className={'card-deck'}>
                  { this.renderApartments() }
                 </div>

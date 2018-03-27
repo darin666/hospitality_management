@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Apartments from "./components/Apartments";
+import Layout from "./pages/Layout"
 import NavComponent from'./components/NavComponent';
+import { Route, IndexRoute, HashRouter } from "react-router-dom";
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -20,4 +22,12 @@ require('./bootstrap');
 require('./components/Apartments');
 
 
-ReactDOM.render([<Apartments />], document.getElementById('app'));
+ReactDOM.render(
+    <HashRouter>
+        <div>
+        <Route exact="/home" component={Apartments}>
+
+        </Route>
+        </div>
+    </HashRouter>
+        ,document.getElementById('app'));
