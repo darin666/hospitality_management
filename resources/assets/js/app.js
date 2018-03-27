@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Apartments from "./components/Apartments";
-import Layout from "./pages/Layout"
-import NavComponent from'./components/NavComponent';
 import { Route, IndexRoute, HashRouter } from "react-router-dom";
 
 /**
