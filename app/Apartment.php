@@ -14,6 +14,11 @@ class Apartment extends Model
         return $this->hasMany('App\Task');
     }
 
+    public function events()                    // added
+    {
+        return $this->hasMany('App\Event');
+    }
+
     public function forms()
     {
         return $this->hasMany('App\Form');

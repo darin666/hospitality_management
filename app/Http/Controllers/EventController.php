@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Calendar;
+use \App\Reservation;                   // added
+use \App\Apartment;                     // added
+use Illuminate\Support\Facades\Auth;    // added
 use App\Event;
 
 class EventController extends Controller
