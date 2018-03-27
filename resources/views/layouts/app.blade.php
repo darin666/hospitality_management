@@ -27,7 +27,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                    @if (Auth::user()->id == 1)
                         <li><a class="nav-link" href="{{ action('ApartmentController@index') }}">Apartments</a></li>
+
+                    @endif
                         <li><a class="nav-link" href="{{ action('TaskController@index') }}">Tasks</a></li>
                         <li><a class="nav-link" href="{{ action('FormController@index') }}">Forms</a></li>
 
@@ -42,8 +45,11 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }}
+
+                                     <span class="caret"></span>
                                 </a>
+
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
