@@ -86,6 +86,7 @@
                     <p class="links">
                         <a href="{{ route('login') }}">To begin, please login</a><a href="{{ route('register') }}"> or Register</a>
                     </p>
+
                 </div>
             </div>
         </div>

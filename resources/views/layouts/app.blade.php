@@ -13,8 +13,14 @@
         HM App
     </title>
 
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+    @yield('head-script')
+
+    @yield('style')
 </head>
 <body>
     <div id="app">
@@ -34,6 +40,7 @@
                         <li><a class="nav-link" href="{{ action('ApartmentController@index') }}">Apartments</a></li>
                         <li><a class="nav-link" href="{{ action('TaskController@index') }}">Tasks</a></li>
                         <li><a class="nav-link" href="{{ action('FormController@index') }}">Forms</a></li>
+                        <li><a class="nav-link" href="{{ action('EventController@index') }}">Calendar</a></li>
 
                     </ul>
 
@@ -72,7 +79,11 @@
         </main>
     </div>
 
+
     <!-- Scripts -->
     {{--<script src="{{ asset('js/app.js') }}"></script>--}}
+
+    @yield('script')
+
 </body>
 </html>

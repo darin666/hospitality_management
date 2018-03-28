@@ -78,7 +78,6 @@ class TaskController extends Controller
         $view = view('tasks.show',['newTask'=>$newTask]);
 
         return $view;
-
     }
 
     /**
