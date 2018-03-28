@@ -92,3 +92,14 @@ Route::post('api/apartments','ApartmentAPIController@store');
 Route::put('api/apartments/{apartment}','ApartmentAPIController@update');
 
 Route::delete('apartments/{apartment}', 'ApartmentAPIController@delete');
+
+
+Route::get('api/tasks', 'TaskAPIController@index');
+
+Route::get('api/tasks/{task}', 'TaskAPIController@show');
+
+Route::post('api/tasks','TaskAPIControllerr@store');
+
+Route::put('api/tasks/{task}','TaskAPIController@update');
+
+Route::delete('tasks/{task}', 'TaskAPIController@delete');
