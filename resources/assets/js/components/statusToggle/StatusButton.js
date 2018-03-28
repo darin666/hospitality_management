@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 
 export default class StatusButton extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
-            status: 'cross'
+            status: 'cross',
+            value: 0
         };
     }
 
@@ -19,12 +20,14 @@ export default class StatusButton extends Component{
         console.log('flip');
         if(this.state.status == 'cross') {
             this.setState({
-                status :'check'
+                status :'check',
+                value: 1
             });
 
         } else if(this.state.status == 'check') {
             this.setState({
-              status: 'cross'
+                status: 'cross',
+                value: 0
             });
         }
     }
