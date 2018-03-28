@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Home from  "./components/Home";
 import Apartments from "./components/Apartments";
+import Tasks from "./components/Tasks";
 import { Route, IndexRoute, HashRouter } from "react-router-dom";
 
 /**
@@ -17,14 +19,18 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+require('./components/Home');
 require('./components/Apartments');
+require('./components/Tasks');
+
 
 
 ReactDOM.render(
     <HashRouter>
         <div>
-        <Route exact="/home" component={Apartments}>
-
+        <Route exact="/home" component={Home}>
+            <Route path="apartments" component={Apartments}>Apartments</Route>
+            <Route path="tasks" component={Tasks}>Tasks</Route>
         </Route>
         </div>
     </HashRouter>

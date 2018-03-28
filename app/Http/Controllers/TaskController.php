@@ -79,9 +79,6 @@ class TaskController extends Controller
 
         return $view;
 
-
-
-
     }
 
     /**
@@ -92,7 +89,11 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //
+        $newTask = \App\Task::find($id);
+
+        $view = view('tasks.show',['newTask'=>$newTask]);
+
+        return $view;
     }
 
     /**
@@ -104,7 +105,11 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $newTask = Task::findOrFail($id);
+
+        $newTask->update($request->all());
+
+        return redirect('tasks.show',['newTask'=>$newTask]);
     }
 
     /**
