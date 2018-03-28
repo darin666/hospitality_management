@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Calendar;
-use \App\Reservation;                   // added
-use \App\Apartment;                     // added
-use Illuminate\Support\Facades\Auth;    // added
+use \App\Reservation;                   
+use \App\Apartment;                     
+use Illuminate\Support\Facades\Auth;    
+use App\Http\Requests\CreateEventRequest;
+use App\Http\Requests\UpdateEventRequest;
 use App\Event;
 
 class EventController extends Controller
@@ -62,14 +64,14 @@ class EventController extends Controller
         return view('calendar/fullcalendar', compact('calendar','apartments'));
     }
 
-    public function store(Request $request)
+    public function store(CreateEventRequest $request)
     {
         Event::create($request->all());
 
         return redirect('events');
     }
 
-    public function update($id, Request $request)
+    public function update($id, UpdateEventRequest $request)
     {
         $event = Event::findOrFail($id);
 
