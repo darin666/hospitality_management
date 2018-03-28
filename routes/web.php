@@ -60,7 +60,5 @@ Route::get('support/statuses','StatusController@create');
 Route::post('support/statuses','StatusController@store');
 
 // route for events = Calendar
-Route::get('events', 'EventController@index');
-//which method will the calendar modal take, from ReservationController or EventController?
-//???? Route::get('/events/create', 'ReservationController@create');
-//???? Route::post('/events/create', 'ReservationController@store');
+Route::resource('events', 'EventController');
+Route::post('events/store', 'EventController@store');

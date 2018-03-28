@@ -1,3 +1,9 @@
+/* highlighting the days in calendar */
 .fc-day:hover {
     background-color:rgb(255, 193, 78);
+}
+
+/* pointer cursor on calendar event */
+.fc-day-grid-event, .fc-event, .fc-start, .fc-end {
+    cursor: pointer;
 }

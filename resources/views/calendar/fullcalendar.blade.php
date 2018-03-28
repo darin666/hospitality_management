@@ -26,7 +26,8 @@
         </div>
     </div>
 </div>
-    @include('calendar.modal')
+    @include('calendar.create_modal')
+    @include('calendar.update_modal')
 @endsection
 
 @section('script')

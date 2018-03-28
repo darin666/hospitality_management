@@ -8,9 +8,13 @@ class Event extends Model
 {
     protected $table = 'events';
 
-    protected $fillable = ['title','start_date','end_date'];
+    protected $fillable = [
+    'title',
+    'start_date',
+    'end_date',
+    'apartment_id',];
 
-    public function apartment()                         // added
+    public function apartment()
     {
         return $this->belongsTo('App\Apartment');
     }
