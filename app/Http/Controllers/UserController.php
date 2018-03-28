@@ -65,9 +65,6 @@ class UserController extends Controller
 
         $user = \App\User::findOrFail($id);
 
-        if(auth()->user()->id !== 1){
-            return redirect ('users.index')->with('error', 'You are not authorized');
-        }
 
         return view('users.edit', compact('user'));
 
@@ -80,13 +77,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, UpdateUserRequest $request)
+    public function update($id, Request $request)
     {
+        // dd($id);
         $user = \App\User::findOrFail($id);
 
-        $user->update($request->all());
 
-        return redirect('users.index');
+        $user->update($request->all());
+        // dd($user);
+
+        return redirect('users');
     }
 
     /**

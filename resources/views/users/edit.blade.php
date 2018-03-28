@@ -1,23 +1,35 @@
+
 @extends('layouts.app')
 
 @section ('content')
 
-<h4>Edit {!! $user->name !!}'s role</h4>
+
 
 {!! Form::model($user, ['method' => 'PATCH', 'action' => ['UserController@update', $user->id]]) !!}
 
 
     {{ csrf_field() }}
-    {{ method_field('patch') }}
 
-    <input type="text" name="role"  value="{{ $user->role_id }}" placeholder="insert role id" />
-    <input type="tel" name="tel"  value="{{ $user->tel }}" />
+    @can('edit')
+    <h4>Edit {!! $user->name !!}'s role</h4>
+
+  <input type="text" name="role_id"  value = "{{$user->role_id}}" placeholder="insert role id"/>
 
 
-    <button type="submit" class="btn btn-primary">
-                                    {{ __('Update') }}
-                                </button>
 
+    <input type="submit" class="btn btn-primary" value="{{ __('Update') }}">
+    @endcan
+
+    @can('edit-emp')
+    <h4>Edit {!! $user->name !!}'s details</h4>
+    <input type="email" name="email"  value = "{{$user->email}}"/>
+    <input type="tel" name="tel"  value ="{{ $user->tel }}" />
+    <input type="text" name="lastname"  value = "{{$user->lastname}}"/>
+
+
+
+    <input type="submit" class="btn btn-primary" value="{{ __('Update') }}">
+    @endcan
 
     {!! Form::close() !!}
 

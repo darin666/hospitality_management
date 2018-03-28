@@ -27,12 +27,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                    @if (Auth::user()->id == 1)
+
+                    @can('edit')
                         <li><a class="nav-link" href="{{ action('ApartmentController@index') }}">Apartments</a></li>
 
-                    @endif
+                    @endcan
                         <li><a class="nav-link" href="{{ action('TaskController@index') }}">Tasks</a></li>
                         <li><a class="nav-link" href="{{ action('FormController@index') }}">Forms</a></li>
+                        <li><a class="nav-link" href="{{ action('UserController@index') }}">Users</a></li>
 
                     </ul>
 

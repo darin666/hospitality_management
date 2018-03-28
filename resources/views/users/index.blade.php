@@ -8,14 +8,23 @@
 
 <users>
 <h5>
-
-<a href="{{action('UserController@show', [$user->id])}}"> {{$user->name}}</a>
+@can('edit')
+<a href="{{action('UserController@show', [$user->id])}}"> {{$user->name}} {{$user->lastname}}</a>
+@endcan
 
 </h5>
-<h5>{{$user->lastname}}</h5>
-<h5>{{$user->email}}</h5>
-<h5>{{$user->tel}}</h5>
-<h5>{{$user->role_id}}</h5>
+
+@can('edit-emp')
+<a href="{{action('UserController@show', [$user->id])}}"> {{$user->name}} {{$user->lastname}}</a>
+@endcan
+
+</h5>
+
+
+
+<h5>Email: {{$user->email}}</h5>
+<h5>Tel: {{$user->tel}}</h5>
+<h5>User role id: {{$user->role_id}}</h5>
 
 
 
