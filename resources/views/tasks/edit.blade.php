@@ -1,7 +1,8 @@
-@extends('layouts.app') @section ('content') {!! Form::model($newTask, ['method' => 'PATCH', 'action' => ['TaskController@update',
-$newTask->id]]) !!} {{ csrf_field() }}
 
-
+@extends('layouts.app')
+@section ('content')
+{!! Form::model($newTask, ['method' => 'PATCH', 'action' => ['TaskController@update', $newTask->id]]) !!}
+{{ csrf_field() }}
 
 
 <div class="container">
@@ -37,33 +38,11 @@ $newTask->id]]) !!} {{ csrf_field() }}
                     </div>
                 </div>
 
-
-
-                <div class="form-group row">
-                    <label for="statusChange_id" class="col-md-4 col-form-label text-md-right">Status Change ID</label>
-
-                    <div class="col-md-6">
-                        <input id="statusChange_id" type="number" class="form-control" name="statusChange_id" value="{{$newTask->statusChange_id}}"
-                        />
-
-                    </div>
-                </div>
                 <div class="form-group row">
                     <label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
 
                     <div class="col-md-6">
                         <input id="description" type="text" class="form-control" rows="5" name="description" value="{{$newTask->description}}"/>
-
-                    </div>
-                </div>
-
-
-                <div class="form-group row">
-                    <label for="img_link" class="col-md-4 col-form-label text-md-right">Link to photo </label>
-
-                    <div class="col-md-6">
-                        <input type="text" class="form-control-file" id="img_link" aria-describedby="text" name="img_link" value="{{$newTask->img_link}}">
-                        <small id="fileHelp" class="form-text text-muted">Please insert link of image here</small>
 
                     </div>
                 </div>
@@ -81,7 +60,8 @@ $newTask->id]]) !!} {{ csrf_field() }}
 </div>
 
 
+{!! Form::close() !!}
+    @include('errors.list')
+@endsection
 
-
-
-{!! Form::close() !!} @endsection
+ 

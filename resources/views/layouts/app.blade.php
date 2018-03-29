@@ -43,7 +43,6 @@
                         <li><a class="nav-link" href="{{ action('FormController@index') }}">Forms</a></li>
                         <li><a class="nav-link" href="{{ action('EventController@index') }}">Calendar</a></li>
                         <li><a class="nav-link" href="{{ action('UserController@index') }}">Users</a></li>
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
