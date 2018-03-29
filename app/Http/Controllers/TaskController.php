@@ -88,11 +88,11 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        $newTask = \App\Task::find($id);
+        $newTask = \App\Task::findOrFail($id);
+        $apartments = \App\Apartment::all();
 
-        $view = view('tasks.show',['newTask'=>$newTask]);
 
-        return $view;
+        return view('tasks.edit', compact('newTask'));
     }
 
     /**
@@ -104,11 +104,14 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $newTask = Task::findOrFail($id);
+        $newTask = \App\Task::findOrFail($id);
+        $apartments = \App\Apartment::all();
+
 
         $newTask->update($request->all());
+        // dd($user);
 
-        return redirect('tasks.show',['newTask'=>$newTask]);
+        return redirect('tasks');
     }
 
     /**
