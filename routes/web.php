@@ -62,3 +62,5 @@ Route::post('support/statuses','StatusController@store');
 // route for events = Calendar
 Route::resource('events', 'EventController')->middleware('auth');
 Route::post('events/store', 'EventController@store');
+
+Route::post('upload/{id}', 'TaskController@upload');

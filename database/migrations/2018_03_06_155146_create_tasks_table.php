@@ -20,8 +20,7 @@ class CreateTasksTable extends Migration
             $table->integer('status_id');
             $table->integer('raisedBy_id');
             $table->integer('category_id');
-            $table->integer('statusChange_id');
-            $table->string('name');
+            $table->string('name')->nullable();;
             $table->text('description');
             $table->text('img_link')->nullable();
             $table->timestamps();

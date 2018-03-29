@@ -7,6 +7,9 @@ use App\Task;
 use App\Apartment;
 use App\User;
 use App\Http\Requests\CreateTaskRequest;
+use App\Http\Requests\UploadFileRequest;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 
 
 class TaskController extends Controller
@@ -57,9 +60,7 @@ class TaskController extends Controller
         $newTask->apartment_id = $request->get('apartment_id');
         $newTask->status_id = $request->get('status_id');
         $newTask->category_id = $request->get('category_id');
-        $newTask->statusChange_id = $request->get('statusChange_id');
         $newTask->description = $request->get('description');
-        $newTask->img_link = $request->get('img_link');
         $newTask->save();
 
         return redirect(action('TaskController@index'));
@@ -118,4 +119,25 @@ class TaskController extends Controller
     {
         //
     }
+
+    public function upload($id, UploadFileRequest $request)
+    {
+        $newTask = \App\Task::findOrFail($id);
+
+		if(Input::hasFile('file')){
+            if ($newTask->img_link !='' && Storage::disk('local')->exists('public/uploads/' . $newTask->img_link)) {
+                Storage::disk('local')->delete('public/uploads/' . $newTask->img_link);
+            }
+
+            $file = Input::file('file');
+            $future_name = uniqid() . '_' . $file->getClientOriginalName();
+			$file->move('storage/uploads', $future_name);
+            //echo '<img src="storage/uploads/' . $future_name . '" />';
+            $newTask->img_link = $future_name;
+            $newTask->save();
+
+            return redirect(action('TaskController@show', [$newTask->id]));
+        }
+        return redirect()->back();
+	}
 }
