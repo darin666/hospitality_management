@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateTaskRequest extends FormRequest
+class UploadFileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,8 @@ class CreateTaskRequest extends FormRequest
     public function rules()
     {
         return [
-            'apartment_id' => 'required',
-            'status_id',
-            'name',
-            'category_id',
-            'description' => 'required',
+            'file' => 'required | mimes:jpeg,jpg,png | max:1000',
+            'img_link',
         ];
     }
 }

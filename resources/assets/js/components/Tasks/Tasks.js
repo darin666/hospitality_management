@@ -68,24 +68,24 @@ export default class Tasks extends Component {
             return (
                 <div>
 
-                <Task
-                    // updateTask = {this.handleUpdate(task)}
-                    tasks = {this.state.tasks}
-                    mytask = {task}
-                    setCurrentTask = {this.setCurrentTask.bind(this)}
-                    fetchTasks={this.fetchTasks.bind(this)}
-                    name={task.name}
-                    description={task.description}
-                    mykey={task.id}
-                />
+                {/*<Task*/}
+                    {/*// updateTask = {this.handleUpdate(task)}*/}
+                    {/*tasks = {this.state.tasks}*/}
+                    {/*mytask = {task}*/}
+                    {/*setCurrentTask = {this.setCurrentTask.bind(this)}*/}
+                    {/*fetchTasks={this.fetchTasks.bind(this)}*/}
+                    {/*name={task.name}*/}
+                    {/*description={task.description}*/}
+                    {/*mykey={task.id}*/}
+                {/*/>*/}
                 {/*this.handleClick() method is invoked onClick.*/}
 
-                {/*<div task_key={task.id} key={task.id} className={'ml-2 d-flex justify-content-between'}>*/}
-                    {/*{task.name} is {taskStatus} <div onClick={()=> this.handleClick(task)} key={task.id} className={'statusbutton '+ taskClassname}></div>*/}
+                <div task_key={task.id} key={task.id} className={'ml-2 d-flex justify-content-between'}>
+                    {task.name} is {taskStatus} <div onClick={()=> this.handleClick(task)} key={task.id} className={'statusbutton '+ taskClassname}></div>
 
-                {/*<UpdateTask onUpdate={this.handleUpdate.bind(this)} mytask = {task}/>*/}
-                {/*</div>*/}
-                {/*</div>*/}
+                <UpdateTask onUpdate={this.handleUpdate.bind(this)} mytask = {task}/>
+                </div>
+                </div>
 
             );
         })

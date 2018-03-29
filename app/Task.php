@@ -13,7 +13,6 @@ class Task extends Model
     'status_id',
     'name',
     'category_id',
-    'statusChange_id',
     'description',
     'img_link',
     'user_id',
