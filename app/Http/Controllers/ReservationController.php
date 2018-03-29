@@ -77,7 +77,14 @@ class ReservationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $shownReservation = \App\Reservation::findOrFail($id);
+        $shownApartment = \App\Apartment::all();
+
+
+        $shownReservation->update($request->all());
+        // dd($user);
+
+        return redirect('reservations');
     }
 
     /**

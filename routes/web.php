@@ -31,13 +31,15 @@ Route::get('/tasks', 'TaskController@index');
 Route::get('/tasks/create', 'TaskController@create');
 Route::post('/tasks/create', 'TaskController@store');
 Route::get('/tasks/{id}', 'TaskController@show')->name('show task');
-// Route::resource('tasks', 'TaskController');
+Route::get('/tasks/{id}/edit', 'TaskController@edit');
+Route::resource('tasks', 'TaskController');
 
 Route::get('/reservations', 'ReservationController@index');
 Route::get('/reservations/create', 'ReservationController@create');
 Route::get('/reservations/create/{id}', 'ReservationController@create');
 Route::post('/reservations/create', 'ReservationController@store');
 Route::get('/reservations/{id}', 'ReservationController@show')->name('show reservation');
+Route::resource('reservations', 'ReservationController');
 
 // form routes optimization via resource fn - will generate all routes from the controller according to naming convention
 
