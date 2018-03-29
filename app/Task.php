@@ -16,6 +16,8 @@ class Task extends Model
     'statusChange_id',
     'description',
     'img_link',
+    'user_id',
+    'raisedBy_id'
     ];
 
 

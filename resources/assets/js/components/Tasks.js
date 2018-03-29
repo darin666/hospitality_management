@@ -84,7 +84,8 @@ export default class Tasks extends Component {
     handleAddTask(task) {
 
         /*Fetch API for post request */
-        fetch( 'api/tasks/', {
+        console.log('fetch follows...');
+        fetch( '/api/api/tasks', {
             method:'post',
             /* headers are important*/
             headers: {
@@ -93,6 +94,13 @@ export default class Tasks extends Component {
             },
 
             body: JSON.stringify(task)
+            // data: {name: 'test',
+            //     description: 'test',
+            //     user_id: 0,
+            //     category_id: 0,
+            //     apartment_id: 1,
+            //     status_id: 0,
+            //     raisedBy_id: 0,}
         })
             .then(response => {
                 return response.json();
@@ -137,6 +145,9 @@ class Button extends Component{
         }
     }
 
+    // when click:
+
+
     render() {
 
     }
@@ -150,9 +161,9 @@ class AddTask extends Component {
         /* Initialize the state. */
         this.state = {
             newTask: {
-                name: '',
-                description: '',
-                user_id: 0,
+                name: 'default',
+                description: 'default',
+                user_id: 1,
                 category_id: 0,
                 apartment_id: 1,
                 status_id: 0,
@@ -180,6 +191,7 @@ class AddTask extends Component {
         /*A call back to the onAdd props. The current
          *state is passed as a param
          */
+        console.log('im here');
         this.props.onAdd(this.state.newTask);
     }
 

@@ -98,7 +98,7 @@ Route::get('api/tasks', 'TaskAPIController@index');
 
 Route::get('api/tasks/{task}', 'TaskAPIController@show');
 
-Route::post('api/tasks','TaskAPIControllerr@store');
+Route::post('api/tasks','TaskAPIController@store');
 
 Route::put('api/tasks/{task}','TaskAPIController@update');
 

@@ -10,8 +10,10 @@
 
 
         @endforeach
-    <a class="btn btn-primary" href="{{ action('ApartmentController@create') }}">Add a new apartment</a>
 
+    @can('edit')
+    <a class="btn btn-primary" href="{{ action('ApartmentController@create') }}">Add a new apartment</a>
+    @endcan
     </div>
 
 
