@@ -20,9 +20,9 @@ export default class Task extends Component {
         let status = 0;
 
         return (
-            <div onClick={this.UpdateTask}>
+            <div className={'d-flex justify-content-between'} onClick={this.UpdateTask}>
                 {this.props.name}
-                {/*<StatusButton onSend={this.props.handleUpdate.bind(this)} task_key={this.props.mykey}/>*/}
+                <StatusButton/>
             </div>
         );
     }

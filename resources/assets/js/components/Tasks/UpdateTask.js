@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import StatusButton from "./statusToggle/StatusButton";
 
 export default class UpdateTask extends Component {
 
@@ -7,7 +8,7 @@ export default class UpdateTask extends Component {
         super(props);
         /* Initialize the state. */
         this.state = {
-            currentTask: {
+            newTask: {
                 name: this.props.mytask.name,
                 description: this.props.mytask.description,
                 user_id: 1,
@@ -28,7 +29,7 @@ export default class UpdateTask extends Component {
     handleInput(key, e) {
 
         /*Duplicating and updating the state */
-        var state = Object.assign({}, this.state.currentTask);
+        var state = Object.assign({}, this.state.newTask);
         state[key] = e.target.value;
         this.setState({newTask: state });
     }
@@ -39,7 +40,7 @@ export default class UpdateTask extends Component {
         /*A call back to the onAdd props. The current
          *state is passed as a param
          */
-        this.props.onUpdate(this.state.currentTask);
+        this.props.onUpdate(this.state.newTask);
         console.log(this.props.mytask);
     }
 
@@ -55,7 +56,8 @@ export default class UpdateTask extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <label> New status:
                             { /*On every keystroke, the handleInput method is invoked */ }
-                            <input type="number" onChange={(e)=>this.handleInput('status_id',e)} />
+                            {/*<StatusButton onChange={(e)=>this.handleInput('status_id',e)} />*/}
+                            {/*<input type="number" onChange={(e)=>this.handleInput('status_id',e)} />*/}
                         </label>
 
                         <input type="submit" value="Submit" />

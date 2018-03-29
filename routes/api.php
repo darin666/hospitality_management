@@ -83,23 +83,23 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  */
 
 
-Route::get('api/apartments', 'ApartmentAPIController@index');
+Route::get('apartments', 'ApartmentAPIController@index');
 
-Route::get('api/apartments/{apartment}', 'ApartmentAPIController@show');
+Route::get('apartments/{apartment}', 'ApartmentAPIController@show');
 
-Route::post('api/apartments','ApartmentAPIController@store');
+Route::post('apartments','ApartmentAPIController@store');
 
-Route::put('api/apartments/{apartment}','ApartmentAPIController@update');
+Route::put('apartments/{apartment}','ApartmentAPIController@update');
 
 Route::delete('apartments/{apartment}', 'ApartmentAPIController@delete');
 
 
-Route::get('api/tasks', 'TaskAPIController@index');
+Route::get('tasks', 'TaskAPIController@index');
 
-Route::get('api/tasks/{task}', 'TaskAPIController@show');
+Route::get('tasks/{task}', 'TaskAPIController@show');
 
-Route::post('api/tasks','TaskAPIController@store');
+Route::post('tasks','TaskAPIController@store');
 
-Route::put('api/tasks/{task}','TaskAPIController@update');
+Route::put('tasks/{task}','TaskAPIController@update');
 
 Route::delete('tasks/{task}', 'TaskAPIController@delete');

@@ -10,9 +10,9 @@
 
     <button type="submit" class="btn btn-alert" name="Edit Task">
 
-<a href="{{action('TaskController@edit', [$newTask->id])}}">
-{{ __('Edit Task') }}
-</button>
+        <a href="{{action('TaskController@edit', [$newTask->id])}}"></a>
+    {{ __('Edit Task') }}
+    </button>
 
     <a href="{{action('TaskController@edit', [$newTask->id])}}">
         <button type="submit" class="btn btn-alert" name="Edit Task">{{ __('Edit Task') }}</button>

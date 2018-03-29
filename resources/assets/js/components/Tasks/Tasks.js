@@ -12,7 +12,8 @@ export default class Tasks extends Component {
         this.state = {
             tasks: [],
             currentTask: 1,
-            currentTaskStatus:null
+            currentTaskStatus:null,
+            myButtonValue: 0
         };
 
         this.handleAddTask = this.handleAddTask.bind(this);
@@ -68,23 +69,24 @@ export default class Tasks extends Component {
             return (
                 <div>
 
-                {/*<Task*/}
-                    {/*// updateTask = {this.handleUpdate(task)}*/}
-                    {/*tasks = {this.state.tasks}*/}
-                    {/*mytask = {task}*/}
-                    {/*setCurrentTask = {this.setCurrentTask.bind(this)}*/}
-                    {/*fetchTasks={this.fetchTasks.bind(this)}*/}
-                    {/*name={task.name}*/}
-                    {/*description={task.description}*/}
-                    {/*mykey={task.id}*/}
-                {/*/>*/}
+                <Task
+                    // updateTask = {this.handleUpdate(task)}
+                    tasks = {this.state.tasks}
+                    mytask = {task}
+                    setCurrentTask = {this.setCurrentTask.bind(this)}
+                    fetchTasks={this.fetchTasks.bind(this)}
+                    name={task.name}
+                    description={task.description}
+                    mykey={task.id}
+                />
+                {/*<StatusButton/>*/}
                 {/*this.handleClick() method is invoked onClick.*/}
 
-                <div task_key={task.id} key={task.id} className={'ml-2 d-flex justify-content-between'}>
-                    {task.name} is {taskStatus} <div onClick={()=> this.handleClick(task)} key={task.id} className={'statusbutton '+ taskClassname}></div>
+                {/*<div task_key={task.id} key={task.id} className={'ml-2 d-flex justify-content-between'}>*/}
+                    {/*{task.name} is {taskStatus} <div onClick={()=> this.handleClick(task)} key={task.id} className={'statusbutton '+ taskClassname}></div>*/}
 
-                <UpdateTask onUpdate={this.handleUpdate.bind(this)} mytask = {task}/>
-                </div>
+                {/*<UpdateTask onUpdate={this.handleUpdate.bind(this)} mytask = {task}/>*/}
+                {/*</div>*/}
                 </div>
 
             );
@@ -103,7 +105,7 @@ export default class Tasks extends Component {
     }
     handleAddTask(task) {
         /*Fetch API for post request */
-        fetch( '/api/api/tasks', {
+        fetch( '/api/tasks', {
             method:'post',
             /* headers are important*/
             headers: {
@@ -127,7 +129,7 @@ export default class Tasks extends Component {
     handleUpdate(task) {
 
         console.log(task);
-        fetch( '/api/api/tasks/' + task.id, {
+        fetch( '/api/tasks/' + task.id, {
             method:'put',
             headers: {
                 'Accept': 'application/json',

@@ -16,12 +16,13 @@ Route::get('/', function () {
 });
 
 
+// DONT TOUCH THIS
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/apartments', 'ApartmentController@index');
-Route::get('/apartments/create', 'ApartmentController@create');
+Route::get('/apartments', 'ApartmentController@index')->middleware('auth');
+Route::get('/apartments/create', 'ApartmentController@create')->middleware('auth');
 Route::post('/apartments/create', 'ApartmentController@store');
 Route::get('/apartments/{id}', 'ApartmentController@show')->name('show apartment')->middleware('auth');
 //Route::resource('apartments','ApartmentController');
@@ -31,11 +32,6 @@ Route::get('/tasks', 'TaskController@index')->middleware('auth');
 Route::get('/tasks/create', 'TaskController@create')->middleware('auth');
 Route::post('/tasks/create', 'TaskController@store');
 Route::get('/tasks/{id}', 'TaskController@show')->name('show task')->middleware('auth');
-
-Route::get('/tasks/{id}/edit', 'TaskController@edit');
-Route::resource('tasks', 'TaskController');
-// Route::resource('tasks', 'TaskController');
-
 
 Route::get('/reservations', 'ReservationController@index')->middleware('auth');
 Route::get('/reservations/create', 'ReservationController@create')->middleware('auth');
@@ -63,9 +59,6 @@ Route::post('support/roles','RoleController@store');
 Route::get('support/statuses','StatusController@create')->middleware('auth');
 Route::post('support/statuses','StatusController@store');
 
-
-
-
 // route for events = Calendar
 Route::resource('events', 'EventController')->middleware('auth');
 Route::post('events/store', 'EventController@store');
@@ -77,4 +70,3 @@ Route::post('upload/{id}', 'TaskController@upload');
 // Route::get('/users/{id}', 'UserController@show');
 // Route::get('users/{id}/edit', 'UserController@edit');
 Route::resource('users', 'UserController');
-
