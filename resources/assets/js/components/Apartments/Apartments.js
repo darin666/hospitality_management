@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import StatusButton from './statusToggle/StatusButton';
+import StatusButton from '../Tasks/statusToggle/StatusButton';
 
 export default class Apartments extends Component {
 

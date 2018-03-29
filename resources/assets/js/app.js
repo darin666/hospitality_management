@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Main from "./components/Main";
-import Apartments from "./components/Apartments";
-import Tasks from "./components/Tasks";
+import Apartments from "./components/Apartments/Apartments";
+import Tasks from "./components/Tasks/Tasks";
 import { Route, IndexRoute, HashRouter } from "react-router-dom";
 
 /**
@@ -20,8 +20,8 @@ require('./bootstrap');
  */
 
 require('./components/Main');
-require('./components/Apartments');
-require('./components/Tasks');
+require('./components/Apartments/Apartments');
+require('./components/Tasks/Tasks');
 
 
 

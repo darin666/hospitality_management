@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Tasks from "./Tasks";
-import Apartments from "./Apartments";
+import Tasks from "./Tasks/Tasks";
+import Apartments from "./Apartments/Apartments";
 
 class Main extends Component {
     render(){

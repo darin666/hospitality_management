@@ -1070,311 +1070,10 @@ module.exports = checkPropTypes;
 
 /***/ }),
 /* 13 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, __webpack_exports__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__ = __webpack_require__(27);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-var Tasks = function (_Component) {
-    _inherits(Tasks, _Component);
-
-    function Tasks(props) {
-        _classCallCheck(this, Tasks);
-
-        //Initialize the state in the constructor
-        var _this = _possibleConstructorReturn(this, (Tasks.__proto__ || Object.getPrototypeOf(Tasks)).call(this, props));
-
-        _this.state = {
-            tasks: [],
-            currentTask: null,
-            currentTaskStatus: null
-        };
-
-        _this.handleAddTask = _this.handleAddTask.bind(_this);
-        return _this;
-    }
-
-    /*componentDidMount() is a lifecycle method
-     * that gets called after the component is rendered
-     */
-
-
-    _createClass(Tasks, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            /* fetch API in action */
-            this.fetchTask();
-        }
-    }, {
-        key: 'fetchTask',
-        value: function fetchTask() {
-            var _this2 = this;
-
-            fetch('/api/tasks').then(function (response) {
-                return response.json();
-            }).then(function (tasks) {
-                //Fetched product is stored in the state
-                _this2.setState({ tasks: tasks });
-                console.log(tasks);
-            });
-        }
-    }, {
-        key: 'renderTasks',
-        value: function renderTasks() {
-            var _this3 = this;
-
-            return this.state.tasks.map(function (task) {
-                // let taskDisplay = '';
-                //
-                // if(task.user_id !== 1){
-                //     taskDisplay = 'd-none';
-                // }
-
-                var taskClassname = 'cross';
-                if (task.status_id === 1) {
-                    taskClassname = 'check';
-                } else {
-                    taskClassname = 'cross';
-                }
-
-                var taskStatus = 'NOT done';
-
-                if (task.status_id === 1) {
-                    taskStatus = 'DONE';
-                }
-
-                return (
-                    //this.handleClick() method is invoked onClick.
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { task_key: task.id, key: task.id, className: 'ml-2 d-flex justify-content-between' },
-                        task.name,
-                        ' is ',
-                        taskStatus,
-                        ' ',
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { onClick: function onClick() {
-                                return _this3.handleClick(task);
-                            }, key: task.id, className: 'statusbutton ' + taskClassname })
-                    )
-                );
-            });
-        }
-    }, {
-        key: 'handleClick',
-        value: function handleClick(task) {
-            //used to set the state
-            this.setState({ currentTask: task, currentTaskStatus: task.status_id });
-            if (this.state.currentTaskStatus === 0) {
-                this.state.currentTaskStatus = 1;
-            } else {
-                this.state.currentTaskStatus = 0;
-                console.log(this.state.currentTaskStatus);
-            }
-            return this.state.currentTaskStatus;
-        }
-    }, {
-        key: 'handleAddTask',
-        value: function handleAddTask(task) {
-            var _this4 = this;
-
-            /*Fetch API for post request */
-            console.log('fetch follows...');
-            fetch('/api/api/tasks', {
-                method: 'post',
-                /* headers are important*/
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-
-                body: JSON.stringify(task)
-                // data: {name: 'test',
-                //     description: 'test',
-                //     user_id: 0,
-                //     category_id: 0,
-                //     apartment_id: 1,
-                //     status_id: 0,
-                //     raisedBy_id: 0,}
-            }).then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                //update the state of products and currentProduct
-                _this4.setState(function (prevState) {
-                    return {
-                        tasks: prevState.tasks.concat(data),
-                        currentTask: data
-                    };
-                });
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                { className: 'container' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'h2',
-                    { className: 'm-4 text-center' },
-                    'My Tasks'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    null,
-                    this.renderTasks()
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(AddTask, { onAdd: this.handleAddTask })
-            );
-        }
-    }]);
-
-    return Tasks;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (Tasks);
-
-var Button = function (_Component2) {
-    _inherits(Button, _Component2);
-
-    function Button(props) {
-        _classCallCheck(this, Button);
-
-        var _this5 = _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).call(this, props));
-
-        _this5.state = {
-            key: 0,
-            task_key: props.task_key,
-            value: 0
-        };
-        return _this5;
-    }
-
-    // when click:
-
-
-    _createClass(Button, [{
-        key: 'render',
-        value: function render() {}
-    }]);
-
-    return Button;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-var AddTask = function (_Component3) {
-    _inherits(AddTask, _Component3);
-
-    function AddTask(props) {
-        _classCallCheck(this, AddTask);
-
-        /* Initialize the state. */
-        var _this6 = _possibleConstructorReturn(this, (AddTask.__proto__ || Object.getPrototypeOf(AddTask)).call(this, props));
-
-        _this6.state = {
-            newTask: {
-                name: 'default',
-                description: 'default',
-                user_id: 1,
-                category_id: 0,
-                apartment_id: 1,
-                status_id: 0,
-                raisedBy_id: 0
-            }
-
-            //Boilerplate code for binding methods with `this`
-        };_this6.handleSubmit = _this6.handleSubmit.bind(_this6);
-        _this6.handleInput = _this6.handleInput.bind(_this6);
-        return _this6;
-    }
-
-    /* This method dynamically accepts inputs and stores it in the state */
-
-
-    _createClass(AddTask, [{
-        key: 'handleInput',
-        value: function handleInput(key, e) {
-
-            /*Duplicating and updating the state */
-            var state = Object.assign({}, this.state.newTask);
-            state[key] = e.target.value;
-            this.setState({ newTask: state });
-        }
-        /* This method is invoked when submit button is pressed */
-
-    }, {
-        key: 'handleSubmit',
-        value: function handleSubmit(e) {
-            //preventDefault prevents page reload
-            e.preventDefault();
-            /*A call back to the onAdd props. The current
-             *state is passed as a param
-             */
-            console.log('im here');
-            this.props.onAdd(this.state.newTask);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this7 = this;
-
-            // const divStyle = {'form'}
-
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'h2',
-                    null,
-                    ' Add new task '
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    null,
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'form',
-                        { onSubmit: this.handleSubmit },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'label',
-                            null,
-                            ' Name:',
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', onChange: function onChange(e) {
-                                    return _this7.handleInput('name', e);
-                                } })
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'label',
-                            null,
-                            ' Description:',
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', onChange: function onChange(e) {
-                                    return _this7.handleInput('description', e);
-                                } })
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Submit' })
-                    )
-                )
-            );
-        }
-    }]);
-
-    return AddTask;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__["a" /* default */], null), document.getElementById('app'));
+throw new Error("Module build failed: SyntaxError: Unexpected token, expected } (95:76)\n\n\u001b[0m \u001b[90m 93 | \u001b[39m    handleClick(task) {\n \u001b[90m 94 | \u001b[39m        \u001b[90m//used to set the state\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 95 | \u001b[39m        \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msetState({currentTask\u001b[33m:\u001b[39m task\u001b[33m,\u001b[39m currentTaskStatus\u001b[33m:\u001b[39mtask\u001b[33m.\u001b[39mstatus_id})\u001b[33m;\u001b[39m\n \u001b[90m    | \u001b[39m                                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 96 | \u001b[39m        \u001b[36mif\u001b[39m (\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstate\u001b[33m.\u001b[39mcurrentTaskStatus \u001b[33m===\u001b[39m \u001b[35m0\u001b[39m){\n \u001b[90m 97 | \u001b[39m            \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstate\u001b[33m.\u001b[39mcurrentTaskStatus \u001b[33m=\u001b[39m \u001b[35m1\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 98 | \u001b[39m        } \u001b[36melse\u001b[39m {\u001b[0m\n");
 
 /***/ }),
 /* 14 */
@@ -1386,7 +1085,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Tasks_statusToggle_StatusButton__ = __webpack_require__(27);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1526,7 +1225,7 @@ var Apartments = function (_Component) {
 /* harmony default export */ __webpack_exports__["default"] = (Apartments);
 
 
-__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__["a" /* default */], null), document.getElementById('app'));
+__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Tasks_statusToggle_StatusButton__["a" /* default */], null), document.getElementById('app'));
 
 /***/ }),
 /* 15 */
@@ -2232,8 +1931,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Tasks__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Apartments__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Tasks_Tasks__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Apartments_Apartments__ = __webpack_require__(14);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2268,12 +1967,12 @@ var Main = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: 'col-md-4' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Tasks__["default"], null)
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Tasks_Tasks__["default"], null)
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: 'col-md-8' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Apartments__["default"], null)
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Apartments_Apartments__["default"], null)
                     )
                 )
             );
@@ -16126,8 +15825,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Main__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Apartments__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Tasks__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Apartments_Apartments__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Tasks_Tasks__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(59);
 
 
