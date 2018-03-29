@@ -1,7 +1,9 @@
+
 @extends('layouts.app')
 @section ('content')
 {!! Form::model($newTask, ['method' => 'PATCH', 'action' => ['TaskController@update', $newTask->id]]) !!}
 {{ csrf_field() }}
+
 
 <div class="container">
     <div class="row justify-content-center">
@@ -57,6 +59,9 @@
 </div>
 </div>
 
+
 {!! Form::close() !!}
     @include('errors.list')
 @endsection
+
+ 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Reservation;
 use \App\Apartment;
+use \App\Task;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateReservationRequest;
 
@@ -52,6 +53,42 @@ class ReservationController extends Controller
         $newReservation->addedBy_id = Auth::id();
         $newReservation->save();
 
+        $newTask = new Task();
+        $newTask->user_id = \Auth::id(); //Only Manager can create new reservations
+        $newTask->name = 'Check '. $request->get('guest_name'). ' in on ' . $request->get('checkin_date');
+        $newTask->raisedBy_id = \Auth::id();
+        $newTask->apartment_id = $request->get('apartment_id');
+        $newTask->status_id = 0;
+        $newTask->category_id = 0;
+        $newTask->description = 'Generated automatically. Notes: ' . $request->get('description');
+        $newTask->save();
+
+        $newTask = new Task();
+        $newTask->user_id = \Auth::id(); //Only Manager can create new reservations
+        $newTask->name = 'Check '. $request->get('guest_name'). ' out on ' . $request->get('checkout_date');
+        $newTask->raisedBy_id = \Auth::id();
+        $newTask->apartment_id = $request->get('apartment_id');
+        $newTask->status_id = 0;
+        $newTask->category_id = 0;
+        $newTask->description = 'Generated automatically. (Notes:) ' . $request->get('description');
+        $newTask->save();
+
+//        t - new task()
+//        t.setParams(params)
+//        t = Task.createTask(params)
+
+        $apartment = \App\Apartment::find($request->get('apartment_id'));
+
+        $newTask = new Task();
+        $newTask->user_id = \Auth::id(); //Only Manager can create new reservations
+        $newTask->name = 'Clean apartment ' . $apartment->name;
+        $newTask->raisedBy_id = \Auth::id();
+        $newTask->apartment_id = $request->get('apartment_id');
+        $newTask->status_id = 0;
+        $newTask->category_id = 0;
+        $newTask->description = 'Generated automatically. (Notes:) ' . $request->get('description');
+        $newTask->save();
+
         return redirect(action('ReservationController@index'));
     }
 
@@ -77,7 +114,14 @@ class ReservationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $shownReservation = \App\Reservation::findOrFail($id);
+        $shownApartment = \App\Apartment::all();
+
+
+        $shownReservation->update($request->all());
+        // dd($user);
+
+        return redirect('reservations');
     }
 
     /**

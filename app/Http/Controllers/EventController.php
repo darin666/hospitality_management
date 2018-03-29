@@ -10,12 +10,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use App\Event;
+use App\Task;
 
 class EventController extends Controller
 {
     public function index()
     {
-        $apartments = \App\Apartment::all();
+        $apartments = Apartment::all();
         $events = [];
         $data = Event::all();
         if($data->count()) {
@@ -67,6 +68,53 @@ class EventController extends Controller
     public function store(CreateEventRequest $request)
     {
         Event::create($request->all());
+
+        $newReservation = new Reservation();
+        $newReservation->apartment_id = $request->get('apartment_id');
+        $newReservation->checkin_date = $request->get('start_date');
+        $newReservation->checkout_date = $request->get('end_date');
+        $newReservation->checkin_time = '09:00';
+        $newReservation->checkout_time = '09:00';
+        $newReservation->guest_name = $request->get('title');
+        $newReservation->description = 'From calendar';
+        $newReservation->addedBy_id = Auth::id();
+        $newReservation->save();
+
+        $newTask = new Task();
+        $newTask->user_id = \Auth::id(); //Only Manager can create new reservations
+        $newTask->name = 'Check '. $request->get('title'). ' in on ' . $request->get('start_date');
+        $newTask->raisedBy_id = \Auth::id();
+        $newTask->apartment_id = $request->get('apartment_id');
+        $newTask->status_id = 0;
+        $newTask->category_id = 0;
+        $newTask->description = 'From calendar';
+        $newTask->save();
+
+        $newTask = new Task();
+        $newTask->user_id = \Auth::id(); //Only Manager can create new reservations
+        $newTask->name = 'Check '. $request->get('title'). ' out on ' . $request->get('end_date');
+        $newTask->raisedBy_id = \Auth::id();
+        $newTask->apartment_id = $request->get('apartment_id');
+        $newTask->status_id = 0;
+        $newTask->category_id = 0;
+        $newTask->description = 'From calendar';
+        $newTask->save();
+
+//        t - new task()
+//        t.setParams(params)
+//        t = Task.createTask(params)
+
+        $apartment = \App\Apartment::find($request->get('apartment_id'));
+
+        $newTask = new Task();
+        $newTask->user_id = \Auth::id(); //Only Manager can create new reservations
+        $newTask->name = 'Clean apartment ' . $apartment->name;
+        $newTask->raisedBy_id = \Auth::id();
+        $newTask->apartment_id = $request->get('apartment_id');
+        $newTask->status_id = 0;
+        $newTask->category_id = 0;
+        $newTask->description = 'From calendar';
+        $newTask->save();
 
         return redirect('events');
     }

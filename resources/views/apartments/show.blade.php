@@ -16,15 +16,17 @@
                 {{--<li>{{$shownReservation -> guest_name}} from {{$shownReservation->checkin_date}} to {{$shownReservation->checkout_date}}</li>--}}
             @endforeach
         </ul>
-
+        @can('edit')
         <a class="btn-primary btn" href="{{ action('ReservationController@create', [$shownApartment->id]) }}">Add a reservation</a>
         <br/>
+        @endcan
         <br/>
         <a class="btn btn-primary" href="{{ action('FormController@create', [$shownApartment->id]) }}">New guest form</a>
         <br/>
         <br/>
+        @can('edit')
         <a class="btn btn-primary" href="{{ action('TaskController@create', [$shownApartment->id]) }}">Add a new task</a>
-
+        @endcan
     </div>
 
 @endsection

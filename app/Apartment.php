@@ -8,6 +8,8 @@ class Apartment extends Model
 {
     protected $table = "apartments";
 
+    protected $fillable = ['status_id', 'name', 'address', 'img_link','key_counts'];
+
 
     public function tasks()
     {

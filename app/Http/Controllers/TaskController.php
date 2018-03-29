@@ -81,10 +81,6 @@ class TaskController extends Controller
         $view = view('tasks.show',['newTask'=>$newTask]);
 
         return $view;
-
-
-
-
     }
 
     /**
@@ -97,6 +93,8 @@ class TaskController extends Controller
     {
         $newTask = \App\Task::findOrFail($id);
         $apartments = \App\Apartment::all();
+
+
 
         return view('tasks.edit', compact('newTask'));
     }
@@ -112,6 +110,7 @@ class TaskController extends Controller
     {
         $newTask = \App\Task::findOrFail($id);
         $apartments = \App\Apartment::all();
+
 
         $newTask->update($request->all());
         // dd($user);
