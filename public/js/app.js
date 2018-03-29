@@ -1070,9 +1070,8 @@ module.exports = checkPropTypes;
 
 /***/ }),
 /* 13 */
-/***/ (function(module, __webpack_exports__) {
+/***/ (function(module, exports) {
 
-"use strict";
 throw new Error("Module build failed: SyntaxError: Unexpected token, expected } (95:76)\n\n\u001b[0m \u001b[90m 93 | \u001b[39m    handleClick(task) {\n \u001b[90m 94 | \u001b[39m        \u001b[90m//used to set the state\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 95 | \u001b[39m        \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msetState({currentTask\u001b[33m:\u001b[39m task\u001b[33m,\u001b[39m currentTaskStatus\u001b[33m:\u001b[39mtask\u001b[33m.\u001b[39mstatus_id})\u001b[33m;\u001b[39m\n \u001b[90m    | \u001b[39m                                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 96 | \u001b[39m        \u001b[36mif\u001b[39m (\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstate\u001b[33m.\u001b[39mcurrentTaskStatus \u001b[33m===\u001b[39m \u001b[35m0\u001b[39m){\n \u001b[90m 97 | \u001b[39m            \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstate\u001b[33m.\u001b[39mcurrentTaskStatus \u001b[33m=\u001b[39m \u001b[35m1\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 98 | \u001b[39m        } \u001b[36melse\u001b[39m {\u001b[0m\n");
 
 /***/ }),
@@ -1932,6 +1931,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Tasks_Tasks__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Tasks_Tasks___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Tasks_Tasks__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Apartments_Apartments__ = __webpack_require__(14);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -15827,6 +15827,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Main__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Apartments_Apartments__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Tasks_Tasks__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Tasks_Tasks___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_Tasks_Tasks__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(59);
 
 
