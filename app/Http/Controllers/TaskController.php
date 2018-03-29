@@ -7,6 +7,7 @@ use App\Task;
 use App\Apartment;
 use App\User;
 use App\Http\Requests\CreateTaskRequest;
+use App\Http\Requests\UpdateTaskRequest;
 use App\Http\Requests\UploadFileRequest;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
@@ -94,7 +95,10 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //
+        $newTask = \App\Task::findOrFail($id);
+        $apartments = \App\Apartment::all();
+
+        return view('tasks.edit', compact('newTask'));
     }
 
     /**
@@ -104,9 +108,15 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTaskRequest $request, $id)
     {
-        //
+        $newTask = \App\Task::findOrFail($id);
+        $apartments = \App\Apartment::all();
+
+        $newTask->update($request->all());
+        // dd($user);
+
+        return redirect('tasks');
     }
 
     /**

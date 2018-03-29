@@ -27,11 +27,11 @@ Route::post('/apartments/create', 'ApartmentController@store');
 Route::get('/apartments/{id}', 'ApartmentController@show')->name('show apartment')->middleware('auth');
 //Route::resource('apartments','ApartmentController');
 
+Route::resource('tasks', 'TaskController');
 Route::get('/tasks', 'TaskController@index')->middleware('auth');
 Route::get('/tasks/create', 'TaskController@create')->middleware('auth');
 Route::post('/tasks/create', 'TaskController@store');
 Route::get('/tasks/{id}', 'TaskController@show')->name('show task')->middleware('auth');
-// Route::resource('tasks', 'TaskController');
 
 Route::get('/reservations', 'ReservationController@index')->middleware('auth');
 Route::get('/reservations/create', 'ReservationController@create')->middleware('auth');
@@ -64,3 +64,9 @@ Route::resource('events', 'EventController')->middleware('auth');
 Route::post('events/store', 'EventController@store');
 
 Route::post('upload/{id}', 'TaskController@upload');
+
+// Route::get('/user', 'UserController@edit');
+// Route::get('/users', 'UserController@index');
+// Route::get('/users/{id}', 'UserController@show');
+// Route::get('users/{id}/edit', 'UserController@edit');
+Route::resource('users', 'UserController');
