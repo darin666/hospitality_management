@@ -21,23 +21,23 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/apartments', 'ApartmentController@index');
-Route::get('/apartments/create', 'ApartmentController@create');
+Route::get('/apartments', 'ApartmentController@index')->middleware('auth');
+Route::get('/apartments/create', 'ApartmentController@create')->middleware('auth');
 Route::post('/apartments/create', 'ApartmentController@store');
-Route::get('/apartments/{id}', 'ApartmentController@show')->name('show apartment');
+Route::get('/apartments/{id}', 'ApartmentController@show')->name('show apartment')->middleware('auth');
 //Route::resource('apartments','ApartmentController');
 
-Route::get('/tasks', 'TaskController@index');
-Route::get('/tasks/create', 'TaskController@create');
+Route::get('/tasks', 'TaskController@index')->middleware('auth');
+Route::get('/tasks/create', 'TaskController@create')->middleware('auth');
 Route::post('/tasks/create', 'TaskController@store');
-Route::get('/tasks/{id}', 'TaskController@show')->name('show task');
+Route::get('/tasks/{id}', 'TaskController@show')->name('show task')->middleware('auth');
 // Route::resource('tasks', 'TaskController');
 
-Route::get('/reservations', 'ReservationController@index');
-Route::get('/reservations/create', 'ReservationController@create');
-Route::get('/reservations/create/{id}', 'ReservationController@create');
+Route::get('/reservations', 'ReservationController@index')->middleware('auth');
+Route::get('/reservations/create', 'ReservationController@create')->middleware('auth');
+Route::get('/reservations/create/{id}', 'ReservationController@create')->middleware('auth');
 Route::post('/reservations/create', 'ReservationController@store');
-Route::get('/reservations/{id}', 'ReservationController@show')->name('show reservation');
+Route::get('/reservations/{id}', 'ReservationController@show')->name('show reservation')->middleware('auth');
 
 // form routes optimization via resource fn - will generate all routes from the controller according to naming convention
 
@@ -47,18 +47,18 @@ Route::get('/reservations/{id}', 'ReservationController@show')->name('show reser
 // Route::post('/form', 'FormController@store');
 // Route::get('/form/{id}/edit', 'FormController@edit');
 
-Route::resource('form', 'FormController');
-Route::get('/form/create/{id}', 'FormController@create');
+Route::resource('form', 'FormController')->middleware('auth');
+Route::get('/form/create/{id}', 'FormController@create')->middleware('auth');
 
-Route::get('support/categories','CategoryController@create');
+Route::get('support/categories','CategoryController@create')->middleware('auth');
 Route::post('support/categories','CategoryController@store');
 
-Route::get('support/roles','RoleController@create');
+Route::get('support/roles','RoleController@create')->middleware('auth');
 Route::post('support/roles','RoleController@store');
 
-Route::get('support/statuses','StatusController@create');
+Route::get('support/statuses','StatusController@create')->middleware('auth');
 Route::post('support/statuses','StatusController@store');
 
 // route for events = Calendar
-Route::resource('events', 'EventController');
+Route::resource('events', 'EventController')->middleware('auth');
 Route::post('events/store', 'EventController@store');
