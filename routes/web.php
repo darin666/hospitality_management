@@ -30,6 +30,8 @@ Route::get('/tasks', 'TaskController@index')->middleware('auth');
 Route::get('/tasks/create', 'TaskController@create')->middleware('auth');
 Route::post('/tasks/create', 'TaskController@store');
 Route::get('/tasks/{id}', 'TaskController@show')->name('show task')->middleware('auth');
+Route::get('/tasks/{id}/edit', 'TaskController@edit');
+Route::resource('tasks', 'TaskController');
 // Route::resource('tasks', 'TaskController');
 
 Route::get('/reservations', 'ReservationController@index')->middleware('auth');
@@ -64,3 +66,6 @@ Route::post('support/statuses','StatusController@store');
 // route for events = Calendar
 Route::resource('events', 'EventController')->middleware('auth');
 Route::post('events/store', 'EventController@store');
+
+Route::resource('users', 'UserController');
+
