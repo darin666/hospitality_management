@@ -10,11 +10,11 @@
     {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">--}}
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+<nav class="navbar navbar-expand-md navbar-laravel navbar-dark bg-dark text-primary">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            Hospitality Management App
             {{--{{ config('app.name', 'Laravel') }}--}}
+            Hospitality Management App
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,10 +23,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
+
                 <li><a class="nav-link" href="{{ action('ApartmentController@index') }}">Apartments</a></li>
                 <li><a class="nav-link" href="{{ action('TaskController@index') }}">Tasks</a></li>
                 <li><a class="nav-link" href="{{ action('FormController@index') }}">Forms</a></li>
-
+                <li><a class="nav-link" href="{{ action('EventController@index') }}">Calendar</a></li>
+                <li><a class="nav-link" href="{{ action('UserController@index') }}">Users</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->

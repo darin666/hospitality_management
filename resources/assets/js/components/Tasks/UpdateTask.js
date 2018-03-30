@@ -49,19 +49,19 @@ export default class UpdateTask extends Component {
 
         return(
             <div>
-                <h2> Edit task </h2>
                 <div>
                     {/*when Submit button is pressed, the control is passed to*/}
                     {/*handleSubmit method*/}
-                    <form onSubmit={this.handleSubmit}>
-                        <label> New status:
+                    <StatusButton
+                        onSubmit={this.handleSubmit}>
+                        {/*<label> New status:*/}
                             { /*On every keystroke, the handleInput method is invoked */ }
                             {/*<StatusButton onChange={(e)=>this.handleInput('status_id',e)} />*/}
                             {/*<input type="number" onChange={(e)=>this.handleInput('status_id',e)} />*/}
-                        </label>
+                        {/*</label>*/}
 
-                        <input type="submit" value="Submit" />
-                    </form>
+                        {/*<input type="submit" value="Submit" />*/}
+                    </StatusButton>
                 </div>
             </div>)
     }
