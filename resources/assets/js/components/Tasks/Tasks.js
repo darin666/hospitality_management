@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import StatusButton from './statusToggle/StatusButton';
 import Task from './Task';
 import AddTask from './AddTask';
-import UpdateTask from "./UpdateTask";
 export default class Tasks extends Component {
 
     constructor(props) {
@@ -12,8 +11,6 @@ export default class Tasks extends Component {
         this.state = {
             tasks: [],
             currentTask: 1,
-            currentTaskStatus:null,
-            myButtonValue: 0
         };
 
         this.handleAddTask = this.handleAddTask.bind(this);
@@ -31,7 +28,6 @@ export default class Tasks extends Component {
        this.fetchTasks();
     }
 
-
     fetchTasks() {
         fetch('/api/tasks')
             .then(response => {
@@ -43,6 +39,7 @@ export default class Tasks extends Component {
                 console.log(tasks);
             });
     }
+
     renderTasks() {
 
         return this.state.tasks.map(
@@ -53,18 +50,18 @@ export default class Tasks extends Component {
             //     taskDisplay = 'd-none';
             // }
 
-            let taskClassname = 'cross';
-            if(task.status_id === 1){
-                taskClassname = 'check';
-            } else {
-                taskClassname = 'cross';
-            }
-
-            let taskStatus = 'NOT done';
-
-            if(task.status_id === 1){
-                taskStatus = 'DONE';
-            }
+            // let taskClassname = 'cross';
+            // if(task.status_id === 1){
+            //     taskClassname = 'check';
+            // } else {
+            //     taskClassname = 'cross';
+            // }
+            //
+            // let taskStatus = 'NOT done';
+            //
+            // if(task.status_id === 1){
+            //     taskStatus = 'DONE';
+            // }
 
             return (
                 <div>
@@ -92,8 +89,9 @@ export default class Tasks extends Component {
             );
         })
     }
-    handleClick(task) {
+
         //used to set the state
+    handleClick(task) {
         this.setState({currentTask: task, currentTaskStatus:task.status_id});
         if (this.state.currentTaskStatus === 0){
             this.state.currentTaskStatus = 1;
@@ -103,6 +101,7 @@ export default class Tasks extends Component {
         }
         return this.state.currentTaskStatus;
     }
+
     handleAddTask(task) {
         /*Fetch API for post request */
         fetch( '/api/tasks', {
@@ -126,6 +125,7 @@ export default class Tasks extends Component {
             })
 
     }
+
     handleUpdate(task) {
 
         console.log(task);
@@ -151,6 +151,7 @@ export default class Tasks extends Component {
                 }))
             })
     }
+
     render() {
 
         let mytask = this.state.tasks.find(task=>task.id == this.state.currentTask)

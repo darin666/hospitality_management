@@ -5,48 +5,53 @@ import StatusButton from "./statusToggle/StatusButton";
 export default class Task extends Component {
     constructor(props){
         super(props);
-
+        console.log(this.props.mytask.status_id);
         this.state = {
-            loaded: false,
-            currentTaskStatus: 0
+            currentTaskStatus: this.props.mytask.status_id,
+            mykey: this.props.mykey,
+            currentTask: this.props.currentTask
         }
     }
 
-    componentWillMount(){
-        this.props.fetchTasks();
+    // componentWillMount(){
+    //     this.props.fetchTasks();
+    // }
+
+    handleClickButton(value){
+        this.setState({currentTaskStatus:value});
+        console.log('value:',value);
+        this.UpdateTask(value);
     }
 
     render() {
         let status = 0;
 
         return (
-            <div className={'d-flex justify-content-between'} onClick={this.UpdateTask}>
+            <div className={'d-flex justify-content-between'}>
                 {this.props.name}
-                <StatusButton/>
+                <StatusButton
+                    status = {this.state.currentTaskStatus}
+                    handleClickButton = {this.handleClickButton.bind(this)}/>
             </div>
         );
     }
-    UpdateTask() {
-        fetch( '/api/api/tasks/' + this.props.mykey, {
+
+    UpdateTask(value) {
+        console.log(this);
+        console.log('status :', this.state.currentTaskStatus)
+        fetch( '/api/tasks/' + this.props.mykey, {
             method:'put',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(this.props.mytask)
+            body: JSON.stringify({status_id: value})
         })
             .then(response => {
                 return response.json();
             })
             .then( data => {
-                /* Updating the state */
-                var array = this.props.tasks.filter(function(item) {
-                    return item !== currentTask
-                })
-                this.setState((prevState)=> ({
-                    tasks: array.concat(task),
-                    currentTask : task
-                }))
+
             })
     }
 }

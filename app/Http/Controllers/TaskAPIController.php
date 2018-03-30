@@ -42,7 +42,7 @@ class TaskAPIController extends Controller
 
     public function update(Request $request, Task $task)
     {
-        $task->update($request->all());
+        $task->update($request->only('status_id'));
 
         return response()->json($task, 200);
     }
