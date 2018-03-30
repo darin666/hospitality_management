@@ -185,10 +185,7 @@ export default class Tasks extends Component {
                 <div>
                     { this.renderTasks() }
                 </div>
-
-                <AddTask onAdd={this.handleAddTask}/>
-
-
+                {/*<AddTask onAdd={this.handleAddTask}/>*/}
             </div>
 
         );

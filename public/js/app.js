@@ -1363,8 +1363,7 @@ var Tasks = function (_Component) {
                     'div',
                     null,
                     this.renderTasks()
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__AddTask__["a" /* default */], { onAdd: this.handleAddTask })
+                )
             );
         }
     }]);
@@ -33593,7 +33592,7 @@ var AddTask = function (_Component) {
     return AddTask;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["a"] = (AddTask);
+/* unused harmony default export */ var _unused_webpack_default_export = (AddTask);
 
 /***/ }),
 /* 62 */
