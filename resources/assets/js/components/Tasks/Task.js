@@ -24,14 +24,21 @@ export default class Task extends Component {
     }
 
     render() {
-        let status = 0;
+        let styling = 'text-danger';
+        if (this.state.currentTaskStatus===1){
+            styling = 'text-secondary';
+        }
 
         return (
-            <div className={'d-flex justify-content-between'}>
-                {this.props.name}
+            <div className={'d-flex justify-content-between '+ styling}>
+                <div className={'ml-5'}>
+                    {this.props.name}
+                </div>
+                <div>
                 <StatusButton
                     status = {this.state.currentTaskStatus}
                     handleClickButton = {this.handleClickButton.bind(this)}/>
+                </div>
             </div>
         );
     }

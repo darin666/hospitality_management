@@ -85,7 +85,7 @@ export default class Apartments extends Component {
     render() {
         return (
             <div className={'container'}>
-                <h2 className={'m-4 text-center'}>All Apartments</h2>
+                <h2 className={'m-4 text-center'}>Apartments</h2>
 
                 <div className={'card-deck'}>
                  { this.renderApartments() }

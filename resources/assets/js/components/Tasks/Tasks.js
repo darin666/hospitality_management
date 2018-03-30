@@ -181,7 +181,7 @@ export default class Tasks extends Component {
 
         return (
             <div className={'container'}>
-                <h2 className={'m-4 text-center'}>My Tasks</h2>
+                <h2 className={'m-4 text-center'}>Tasks</h2>
                 <div>
                     { this.renderTasks() }
                 </div>

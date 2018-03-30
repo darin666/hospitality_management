@@ -9,10 +9,10 @@ class Main extends Component {
             <div>
                 {/*<h3 className={'text-center'}>Apartments and Tasks</h3>*/}
                 <div className={'row'}>
-                    <div className={'col-md-4'}>
+                    <div className={'col-md-4 text-primary'}>
                         <Tasks/>
                     </div>
-                    <div className={'col-md-8'}>
+                    <div className={'col-md-8 text-primary'}>
                         <Apartments/>
                     </div>
                 </div>

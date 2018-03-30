@@ -1357,7 +1357,7 @@ var Tasks = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h2',
                     { className: 'm-4 text-center' },
-                    'My Tasks'
+                    'Tasks'
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
@@ -1509,7 +1509,7 @@ var Apartments = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h2',
                     { className: 'm-4 text-center' },
-                    'All Apartments'
+                    'Apartments'
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
@@ -2267,12 +2267,12 @@ var Main = function (_Component) {
                     { className: 'row' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'col-md-4' },
+                        { className: 'col-md-4 text-primary' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Tasks_Tasks__["default"], null)
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'col-md-8' },
+                        { className: 'col-md-8 text-primary' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Apartments_Apartments__["default"], null)
                     )
                 )
@@ -33440,15 +33440,26 @@ var Task = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var status = 0;
+            var styling = 'text-danger';
+            if (this.state.currentTaskStatus === 1) {
+                styling = 'text-secondary';
+            }
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'd-flex justify-content-between' },
-                this.props.name,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__["a" /* default */], {
-                    status: this.state.currentTaskStatus,
-                    handleClickButton: this.handleClickButton.bind(this) })
+                { className: 'd-flex justify-content-between ' + styling },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'ml-5' },
+                    this.props.name
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__["a" /* default */], {
+                        status: this.state.currentTaskStatus,
+                        handleClickButton: this.handleClickButton.bind(this) })
+                )
             );
         }
     }, {
