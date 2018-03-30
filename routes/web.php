@@ -69,4 +69,4 @@ Route::post('upload/{id}', 'TaskController@upload');
 // Route::get('/users', 'UserController@index');
 // Route::get('/users/{id}', 'UserController@show');
 // Route::get('users/{id}/edit', 'UserController@edit');
-Route::resource('users', 'UserController');
+Route::resource('users', 'UserController')->middleware('auth');
