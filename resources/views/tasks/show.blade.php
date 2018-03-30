@@ -4,15 +4,6 @@
     <div class="container">
     <h3>{{$newTask->name}}</h3>
     <h3>{{$newTask->description}}</h3>
-        <a href="{{ route('edit task',['id'=>$newTask->id]) }}">Edit</a>
-
-
-
-    <button type="submit" class="btn btn-alert" name="Edit Task">
-
-        <a href="{{action('TaskController@edit', [$newTask->id])}}"></a>
-    {{ __('Edit Task') }}
-    </button>
 
     <a href="{{action('TaskController@edit', [$newTask->id])}}">
         <button type="submit" class="btn btn-alert" name="Edit Task">{{ __('Edit Task') }}</button>
@@ -24,10 +15,12 @@
         <input type="submit" value="Upload" name="submit">
         <input type="hidden" value="{{ csrf_token() }}" name="_token">
     </form>
-    @if ($newTask->img_link)
-        <img src="{{asset('storage/uploads/' . $newTask->img_link)}}" alt="task-img">
-    @endif
-    @include('errors.list')
+
+@if ($newTask->img_link)
+    <img src="{{asset('storage/uploads/' . $newTask->img_link)}}" alt="task-img">
+@endif
+
+@include('errors.list')
 
 @endsection
 
