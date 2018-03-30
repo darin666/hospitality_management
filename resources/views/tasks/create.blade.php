@@ -9,7 +9,7 @@
                     <div class="card-header">Create a new Task</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ action('TaskAPIController@store') }}">
+                        <form method="POST" action="{{ action('TaskController@store') }}">
                             {!! csrf_field() !!}
                             <div class="form-group row">
                             <label for="apartment_id" class="col-md-4 col-form-label text-md-right">Apartment</label>

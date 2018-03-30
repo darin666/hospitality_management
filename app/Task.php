@@ -15,8 +15,8 @@ class Task extends Model
     'category_id',
     'description',
     'img_link',
-    'user_id',
-    'raisedBy_id'
+    // 'user_id',
+    // 'raisedBy_id'
     ];
 
 
