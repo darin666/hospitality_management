@@ -855,16 +855,23 @@ var StatusButton = function (_Component) {
         var _this = _possibleConstructorReturn(this, (StatusButton.__proto__ || Object.getPrototypeOf(StatusButton)).call(this, props));
 
         _this.state = {
-            status: 'cross',
-            value: 0
+            value: _this.props.status,
+            status: 'cross'
         };
+        if (_this.state.value === 1) {
+            _this.state.status = 'check';
+        } else {
+            _this.state.status = 'cross';
+        }
         return _this;
     }
 
     _createClass(StatusButton, [{
         key: 'render',
         value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'statusbutton ' + this.state.status, onClick: this.flip.bind(this) });
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'statusbutton ' + this.state.status,
+                onClick: this.flip.bind(this) });
         }
     }, {
         key: 'flip',
@@ -875,13 +882,14 @@ var StatusButton = function (_Component) {
                     status: 'check',
                     value: 1
                 });
+                this.props.handleClickButton(1);
             } else if (this.state.status == 'check') {
                 this.setState({
                     status: 'cross',
                     value: 0
                 });
+                this.props.handleClickButton(0);
             }
-            this.props.updateTask(this.state.value);
         }
     }]);
 
@@ -1142,7 +1150,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Task__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__AddTask__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__UpdateTask__ = __webpack_require__(28);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1150,7 +1157,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -1169,9 +1175,7 @@ var Tasks = function (_Component) {
 
         _this.state = {
             tasks: [],
-            currentTask: 1,
-            currentTaskStatus: null,
-            myButtonValue: 0
+            currentTask: 1
         };
 
         _this.handleAddTask = _this.handleAddTask.bind(_this);
@@ -1246,10 +1250,12 @@ var Tasks = function (_Component) {
                 );
             });
         }
+
+        //used to set the state
+
     }, {
         key: 'handleClick',
         value: function handleClick(task) {
-            //used to set the state
             this.setState({ currentTask: task, currentTaskStatus: task.status_id });
             if (this.state.currentTaskStatus === 0) {
                 this.state.currentTaskStatus = 1;
@@ -2285,103 +2291,7 @@ if (document.getElementById('app')) {
 }
 
 /***/ }),
-/* 28 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__ = __webpack_require__(10);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-var UpdateTask = function (_Component) {
-    _inherits(UpdateTask, _Component);
-
-    function UpdateTask(props) {
-        _classCallCheck(this, UpdateTask);
-
-        /* Initialize the state. */
-        var _this = _possibleConstructorReturn(this, (UpdateTask.__proto__ || Object.getPrototypeOf(UpdateTask)).call(this, props));
-
-        _this.state = {
-            newTask: {
-                name: _this.props.mytask.name,
-                description: _this.props.mytask.description,
-                user_id: 1,
-                category_id: 0,
-                apartment_id: 1,
-                status_id: 1,
-                raisedBy_id: 0,
-                id: _this.props.mytask.id
-            }
-
-            //Boilerplate code for binding methods with `this`
-        };_this.handleSubmit = _this.handleSubmit.bind(_this);
-        _this.handleInput = _this.handleInput.bind(_this);
-        return _this;
-    }
-
-    /* This method dynamically accepts inputs and stores it in the state */
-
-
-    _createClass(UpdateTask, [{
-        key: 'handleInput',
-        value: function handleInput(key, e) {
-
-            /*Duplicating and updating the state */
-            var state = Object.assign({}, this.state.newTask);
-            state[key] = e.target.value;
-            this.setState({ newTask: state });
-        }
-        /* This method is invoked when submit button is pressed */
-
-    }, {
-        key: 'handleSubmit',
-        value: function handleSubmit(e) {
-            //preventDefault prevents page reload
-            e.preventDefault();
-            /*A call back to the onAdd props. The current
-             *state is passed as a param
-             */
-            this.props.onUpdate(this.state.newTask);
-            console.log(this.props.mytask);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            // const divStyle = {'form'}
-
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    null,
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__["a" /* default */], {
-                        onSubmit: this.handleSubmit })
-                )
-            );
-        }
-    }]);
-
-    return UpdateTask;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (UpdateTask);
-
-/***/ }),
+/* 28 */,
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -33488,7 +33398,6 @@ module.exports = camelize;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__UpdateTask__ = __webpack_require__(28);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33496,7 +33405,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -33510,17 +33418,25 @@ var Task = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (Task.__proto__ || Object.getPrototypeOf(Task)).call(this, props));
 
+        console.log(_this.props.mytask.status_id);
         _this.state = {
-            loaded: false,
-            currentTaskStatus: 0
+            currentTaskStatus: _this.props.mytask.status_id,
+            mykey: _this.props.mykey,
+            currentTask: _this.props.currentTask
         };
         return _this;
     }
 
+    // componentWillMount(){
+    //     this.props.fetchTasks();
+    // }
+
     _createClass(Task, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-            this.props.fetchTasks();
+        key: 'handleClickButton',
+        value: function handleClickButton(value) {
+            this.setState({ currentTaskStatus: value });
+            console.log('value:', value);
+            this.UpdateTask(value);
         }
     }, {
         key: 'render',
@@ -33529,39 +33445,28 @@ var Task = function (_Component) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'd-flex justify-content-between', onClick: this.UpdateTask },
+                { className: 'd-flex justify-content-between' },
                 this.props.name,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__UpdateTask__["a" /* default */], {
-                    updateTask: this.UpdateTask
-                })
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__statusToggle_StatusButton__["a" /* default */], {
+                    status: this.state.currentTaskStatus,
+                    handleClickButton: this.handleClickButton.bind(this) })
             );
         }
     }, {
         key: 'UpdateTask',
-        value: function UpdateTask() {
-            var _this2 = this;
-
-            fetch('/api/api/tasks/' + this.props.mykey, {
+        value: function UpdateTask(value) {
+            console.log(this);
+            console.log('status :', this.state.currentTaskStatus);
+            fetch('/api/tasks/' + this.props.mykey, {
                 method: 'put',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(this.props.mytask)
+                body: JSON.stringify({ status_id: value })
             }).then(function (response) {
                 return response.json();
-            }).then(function (data) {
-                /* Updating the state */
-                var array = _this2.props.tasks.filter(function (item) {
-                    return item !== currentTask;
-                });
-                _this2.setState(function (prevState) {
-                    return {
-                        tasks: array.concat(task),
-                        currentTask: task
-                    };
-                });
-            });
+            }).then(function (data) {});
         }
     }]);
 
