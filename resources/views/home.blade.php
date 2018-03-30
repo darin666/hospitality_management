@@ -23,8 +23,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-
+                @can('edit')
                 <li><a class="nav-link" href="{{ action('ApartmentController@index') }}">Apartments</a></li>
+                @endcan
                 <li><a class="nav-link" href="{{ action('TaskController@index') }}">Tasks</a></li>
                 <li><a class="nav-link" href="{{ action('FormController@index') }}">Forms</a></li>
                 <li><a class="nav-link" href="{{ action('EventController@index') }}">Calendar</a></li>
