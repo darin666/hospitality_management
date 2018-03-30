@@ -13066,6 +13066,16 @@ a.text-dark:focus {
   height: 20px;
 }
 
+.statusbutton-lg {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  -webkit-transition: 400ms;
+  transition: 400ms;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+
 .check {
   background-image: url("/images/check.svg");
 }

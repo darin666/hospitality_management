@@ -7,47 +7,56 @@
             <h3>My tasks</h3>
             @foreach($tasks as $newTask)<br>
                 @if(Auth::user()->id == $newTask->user_id)
-                    <a class="btn btn-danger" href="{{ route('show task',['id'=>$newTask->id]) }}">{{$newTask->name}}
-                    <br>
-                    {{$newTask->description}}
-                    <br>
-                    @foreach($shownApartments as $shownApartment)
-                        @if($newTask->apartment_id == $shownApartment->id)
-                        {{ $shownApartment->name }}
-                        @endif
-                    @endforeach
-                    </a>
-                    <br>
+                    <div class="row">
+                        <div class="col-2">
+                            @if($newTask->status_id === 0)
+                            <div class="statusbutton-lg cross"></div>
+                            @endif
+                            @if($newTask->status_id === 1)
+                            <div class="statusbutton-lg check"></div>
+                            @endif
+                        </div>
+                        <div class="col-10">
+                            <a class="btn btn-outline-primary btn-block" href="{{ route('show task',['id'=>$newTask->id]) }}">{{$newTask->name}}
+                            @foreach($shownApartments as $shownApartment)
+                                @if($newTask->apartment_id == $shownApartment->id)
+                                {{ $shownApartment->name }}
+                                @endif
+                            @endforeach
+                            </a>
+                        </div>
+                    </div>
                 @endif
             @endforeach
             </div>
 
         <div class="col-sm-8 mb-5">
-        <h3>All Issues</h3>
-                @foreach($tasks as $newTask)<br>
-                <a class="btn btn-danger" href="{{ route('show task',['id'=>$newTask->id]) }}">{{$newTask->name}}
+            <div class="d-flex justify-content-between">
+            <h3>All Issues</h3>
+            <a class="btn btn-primary" href="{{ action('TaskController@create') }}">Create a new task</a>
+            </div>
 
-                    <br>
-
-                    {{$newTask->description}}
-
-                    <br>
-
-                    @foreach($shownApartments as $shownApartment)
-                        @if($newTask->apartment_id == $shownApartment->id)
-                        {{ $shownApartment->name }}
+            @foreach($tasks as $newTask)<br>
+            <div class="row">
+                    <div class="col-2">
+                        @if($newTask->status_id === 0)
+                            <div class="statusbutton-lg cross"></div>
                         @endif
-                    @endforeach
-                </a>
-
-                <br>
-                @endforeach
-
-                <br>
-
-                <a class="btn btn-primary" href="{{ action('TaskController@create') }}">Create a new task</a>
-
-                <br>
+                        @if($newTask->status_id === 1)
+                            <div class="statusbutton-lg check"></div>
+                        @endif
+                    </div>
+                    <div class="col-10">
+                        <a class="btn btn-outline-primary btn-block" href="{{ route('show task',['id'=>$newTask->id]) }}">{{$newTask->name}}
+                            @foreach($shownApartments as $shownApartment)
+                                @if($newTask->apartment_id == $shownApartment->id)
+                                {{ $shownApartment->name }}
+                                @endif
+                            @endforeach
+                        </a>
+                    </div>
+            </div>
+            @endforeach
         </div>
     </div>
 
