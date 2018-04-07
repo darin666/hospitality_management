@@ -40,8 +40,11 @@
                         <li><a class="nav-link" href="{{ action('HomeController@index') }}">Home</a></li>
                         @can('edit')
                         <li><a class="nav-link" href="{{ action('ApartmentController@index') }}">Apartments</a></li>
+
                         @endcan
                         <li><a class="nav-link" href="{{ action('TaskController@index') }}">Tasks</a></li>
+
+                        <li><a class="nav-link" href="{{ action('TaskController@index') }}">All Issues</a></li>
                         <li><a class="nav-link" href="{{ action('FormController@index') }}">Forms</a></li>
                         <li><a class="nav-link" href="{{ action('EventController@index') }}">Calendar</a></li>
                         <li><a class="nav-link" href="{{ action('UserController@index') }}">Users</a></li>
