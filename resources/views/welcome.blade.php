@@ -13,8 +13,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background-color: #2e2e2e;
+                color: #fc6527;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
                 height: 100vh;
@@ -83,7 +83,10 @@
                 </div>
 
                 <div class="links">
-                    In progress...
+                    <p class="links">
+                        <a href="{{ route('login') }}">To begin, please login</a><a href="{{ route('register') }}"> or Register</a>
+                    </p>
+
                 </div>
             </div>
         </div>

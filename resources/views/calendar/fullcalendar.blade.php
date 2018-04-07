@@ -4,6 +4,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 @endsection
 
 @section('style')
@@ -13,6 +14,7 @@
 
 @section('content')
 <div class="container">
+    @include('errors.list')
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -25,6 +27,8 @@
         </div>
     </div>
 </div>
+    @include('calendar.create_modal')
+    @include('calendar.update_modal')
 @endsection
 
 @section('script')

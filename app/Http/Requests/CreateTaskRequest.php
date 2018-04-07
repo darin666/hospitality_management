@@ -28,9 +28,7 @@ class CreateTaskRequest extends FormRequest
             'status_id',
             'name',
             'category_id',
-            'statusChange_id',
             'description' => 'required',
-            'img_link',
         ];
     }
 }
