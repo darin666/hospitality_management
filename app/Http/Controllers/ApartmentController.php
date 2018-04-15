@@ -16,7 +16,7 @@ class ApartmentController extends Controller
     {
 
 //        return Apartment::all();
-        $apartments = \App\Apartment::all();
+//        $apartments = \App\Apartment::all();
 //        return view('apartments.index',['apartments' => $apartments ]);
 
         $tasks = \App\Task::all();

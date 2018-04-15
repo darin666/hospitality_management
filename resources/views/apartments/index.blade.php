@@ -10,12 +10,12 @@
 
     <div class="card-deck">
         <div class="card">
-        
+
         </div>
 
     </div>
-        @foreach($apartments as $apartment)
-                <a class="btn btn-success" href="{{ route('show apartment',['id'=>$apartment->id]) }}">{{$apartment->name}}</a>
+        @foreach($shownApartments as $shownApartment)
+                <a class="btn btn-success" href="{{ route('show apartment',['id'=>$shownApartment->id]) }}">{{$shownApartment->name}}</a>
         @endforeach
 
     @can('edit')
